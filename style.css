@@ -70,8 +70,8 @@ body {
         ),
         linear-gradient(
             135deg,
-            #b6b5b5,
-            #b9b8b8,
+            #ffffff,
+            #ffffff,
             #ffffff
         );
 }
@@ -154,7 +154,7 @@ section {
 .about-content p,
 .service-content > p,
 .contact-information > p {
-    color: var(--gray);
+    color: #000000;
 
     font-size: 17px;
     line-height: 1.8;
@@ -428,7 +428,7 @@ section {
 
     gap: 25px;
 
-    color: #bdbdbd;
+    color: #000000;
 
     font-size: 12px;
     font-weight: 600;
@@ -486,7 +486,7 @@ section {
 }
 
 .logo-link {
-    background: #000;
+    flex-shrink: 0;
 }
 
 .nav-logo {
@@ -528,7 +528,7 @@ section {
         34px 0
         30px;
 
-    color: #d2d2d2;
+    color: #ffffff;
 
     font-size: 13px;
     font-weight: 700;
@@ -732,7 +732,7 @@ section {
     position: relative;
 
     min-height:
-        calc(100vh - 131px);
+        calc(100vh - 88px);
 
     width: min(1280px, 90%);
 
@@ -826,7 +826,7 @@ section {
 .hero-description {
     max-width: 670px;
 
-    color: #b7b7b7;
+    color: #000000;
 
     font-size: 18px;
     line-height: 1.8;
@@ -853,7 +853,7 @@ section {
     align-items: center;
     gap: 9px;
 
-    color: #c9c9c9;
+    color: #000000;
 
     font-size: 13px;
     font-weight: 600;
@@ -1160,12 +1160,12 @@ section {
 
     border:
         1px solid
-        rgba(235, 165, 5, 0.34);
+        rgba(0, 0, 0, 0.34);
 
     border-radius: 9px;
 
     background:
-        rgba(8, 8, 8, 0.9);
+        rgba(235, 165, 5, 0.34);
 
     box-shadow:
         0 18px 45px
@@ -1221,7 +1221,7 @@ section {
 }
 
 .floating-card small {
-    color: var(--gray);
+    color: #000000;
 
     font-size: 10px;
 }
@@ -1320,7 +1320,7 @@ section {
 }
 
 .benefit-card p {
-    color: var(--gray);
+    color: #000000;
 
     font-size: 13px;
     line-height: 1.65;
@@ -1480,7 +1480,7 @@ section {
 .category-card p {
     margin-bottom: 23px;
 
-    color: var(--gray);
+    color: #000000;
 
     font-size: 13px;
     line-height: 1.75;
@@ -1581,7 +1581,7 @@ section {
 }
 
 .service-list-item p {
-    color: var(--gray);
+    color: #000000;
 
     font-size: 13px;
     line-height: 1.6;
@@ -1658,7 +1658,7 @@ section {
 .service-visual-card > p {
     margin-bottom: 32px;
 
-    color: var(--gray);
+    color: #000000;
 
     font-size: 14px;
     line-height: 1.75;
@@ -1686,7 +1686,7 @@ section {
 }
 
 .service-stat span {
-    color: var(--gray);
+    color: #000000;
 
     font-size: 12px;
     text-align: right;
@@ -1786,7 +1786,7 @@ section {
     align-items: center;
     gap: 11px;
 
-    color: #d2d2d2;
+    color: #000000;
 
     font-size: 13px;
     font-weight: 600;
@@ -1968,7 +1968,7 @@ section {
 .contact-item small {
     margin-bottom: 5px;
 
-    color: var(--gray-dark);
+    color: #000000;
 
     font-size: 10px;
     font-weight: 700;
@@ -2039,24 +2039,21 @@ section {
 .form-group textarea {
     width: 100%;
 
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.1);
-
+    border: 1px solid #000000;
     border-radius: 6px;
 
     outline: none;
 
-    color: var(--white);
+    color: #000000;       /* text = black */
+    background: #ffffff;  /* inside box = white */
 
-    background:
-        rgba(5, 5, 5, 0.72);
+    box-shadow:
+        4px 4px 0 #000000,
+        8px 8px 0 #eba505;
 
     transition:
-        border-color
-        var(--transition),
-        box-shadow
-        var(--transition);
+        border-color var(--transition),
+        box-shadow var(--transition);
 }
 
 .form-group input {
@@ -2074,18 +2071,20 @@ section {
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-    color: #626262;
+    color: #000000;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
-    border-color: var(--yellow);
+    border-color: #eba505;
 
     box-shadow:
-        0 0 0 3px
-        rgba(235, 165, 5, 0.09);
-}
+        4px 4px 0 #000000,
+        8px 8px 0 #eba505,
+        0 0 15px rgba(235, 165, 5, 0.30);
 
+    transform: translateY(-2px);
+}
 .form-button {
     width: 100%;
 
@@ -2173,7 +2172,7 @@ section {
 .footer-company p {
     max-width: 330px;
 
-    color: var(--gray);
+    color: #000000;
 
     font-size: 13px;
     line-height: 1.8;
@@ -2216,7 +2215,7 @@ section {
 .footer-column a,
 .footer-column p,
 .footer-column strong {
-    color: var(--gray);
+    color: #000000;
 
     font-size: 12px;
     line-height: 1.6;
@@ -2259,7 +2258,7 @@ section {
 
 .footer-bottom p,
 .footer-legal a {
-    color: #777777;
+    color: #000000;
 
     font-size: 11px;
 }
@@ -2870,4 +2869,178 @@ section {
         animation: none !important;
         transition: none !important;
     }
+}
+.upload-text{
+    display:block;
+    margin:6px 0 10px;
+    color:#bdbdbd;
+    font-size:13px;
+}
+
+input[type="file"]{
+    width:100%;
+    padding:12px;
+    border:2px dashed #ffc107;
+    border-radius:10px;
+    background:#111;
+    color:#fff;
+    cursor:pointer;
+}
+
+input[type="file"]::file-selector-button{
+    background:#ffc107;
+    color:#000;
+    border:none;
+    padding:10px 18px;
+    border-radius:6px;
+    font-weight:700;
+    cursor:pointer;
+    margin-right:15px;
+}
+/* All form inputs */
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select,
+.contact-form input[type="file"] {
+    width: 100%;
+    padding: 14px 16px;
+
+    background: #ffffff;
+    color: #000000;
+
+    border: 1px solid #000000;
+    border-radius: 10px;
+
+    box-shadow:
+        4px 4px 0 #000000,
+        8px 8px 0 #eba505;
+
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+/* Placeholder text */
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #bfbfbf;
+}
+
+/* When the user clicks inside */
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+    outline: none;
+    border-color: #ffc107;
+    box-shadow: 0 0 12px rgba(255, 193, 7, 0.4);
+}
+
+/* File upload button */
+
+.contact-form input[type="file"]::file-selector-button {
+    background: #ffc107;
+    color: #272727;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+/* Upload helper text */
+
+.upload-text {
+    display: block;
+    color: #d0d0d0;
+    margin: 8px 0;
+    font-size: 13px;
+}
+.more-brands {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 20px;
+    color: #000000;
+    font-size: 18px;
+    font-weight: 600;
+    font-style: italic;
+}
+/* All titles inside contact form */
+.contact-form h3,
+.contact-form label {
+    color: #000000;
+}
+.contact-form .upload-text {
+    color: #363636;
+}
+/* PHOTO UPLOAD BOX */
+.contact-form input[type="file"] {
+    height: 70px;
+    padding: 10px 15px;
+
+    background: #ffffff !important;
+    color: #000000 !important;
+
+    border: 1px solid #000000;
+    border-radius: 10px;
+
+    box-shadow:
+        4px 4px 0 #000000,
+        8px 8px 0 #eba505;
+}
+
+/* CHOOSE FILE BUTTON */
+.contact-form input[type="file"]::file-selector-button {
+    height: 48px;
+    padding: 0 22px;
+    margin-right: 15px;
+
+    border: none;
+    border-radius: 7px;
+
+    background: #eba505;
+    color: #000000;
+
+    font-weight: 700;
+    cursor: pointer;
+}
+.floating-contact-button {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ffc107;
+    color: #000;
+
+    border: 3px solid #000;
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 4px #ffc107,
+        0 8px 25px rgba(0, 0, 0, 0.4);
+
+    z-index: 9999;
+    transition: 0.3s ease;
+}
+
+.whatsapp-icon {
+    width: 35px;
+    height: 35px;
+}
+
+.floating-contact-button:hover {
+    background: #000;
+    color: #ffc107;
+    border-color: #ffc107;
+
+    transform: scale(1.1);
 }
