@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Datenschutzerklärung von AS-Xpert Autoteile in Berlin.">
+    <meta name="robots" content="index,follow">
+    <title>Datenschutz | AS-Xpert Autoteile</title>
+
+    <style>
+        :root {
+            --yellow: #eba505;
+            --yellow-dark: #b97e00;
+            --black: #0b0b0b;
+            --text: #1d1d1f;
+            --muted: #666;
+            --line: #e8e8e8;
+            --soft: #f7f7f7;
+            --white: #fff;
+            --max: 980px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.7;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        a:focus-visible, button:focus-visible {
+            outline: 3px solid rgba(235,165,5,.35);
+            outline-offset: 3px;
+        }
+
+        .site-header {
+            background: var(--black);
+            border-bottom: 3px solid var(--yellow);
+        }
+
+        .header-inner {
+            max-width: 1180px;
+            margin: auto;
+            min-height: 78px;
+            padding: 12px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            width: 138px;
+            max-height: 56px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .back-link {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            transition: color .2s ease;
+        }
+
+        .back-link:hover { color: var(--yellow); }
+
+        .hero {
+            background: var(--black);
+            color: #fff;
+            text-align: center;
+            padding: 62px 22px 58px;
+        }
+
+        .hero-inner { max-width: 760px; margin: auto; }
+        .eyebrow {
+            display: inline-block;
+            color: var(--yellow);
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+            font-size: 12px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: clamp(36px, 7vw, 58px);
+            line-height: 1.08;
+            margin-bottom: 14px;
+        }
+
+        h1 span { color: var(--yellow); }
+        .hero p { color: #cfcfcf; font-size: 16px; }
+
+        main { padding: 52px 20px 76px; }
+        .container { max-width: var(--max); margin: auto; }
+
+        .notice {
+            background: var(--soft);
+            border-left: 4px solid var(--yellow);
+            border-radius: 8px;
+            padding: 18px 20px;
+            margin-bottom: 28px;
+            color: #3f3f3f;
+        }
+
+        .notice strong { color: var(--black); }
+
+        .toc {
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 34px;
+        }
+
+        .toc-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--black);
+            margin-bottom: 12px;
+        }
+
+        .toc-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .toc a {
+            background: var(--soft);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            padding: 7px 11px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .toc a:hover { border-color: var(--yellow); color: var(--yellow-dark); }
+
+        .section {
+            padding: 28px 0;
+            border-bottom: 1px solid var(--line);
+            scroll-margin-top: 20px;
+        }
+
+        .section:last-of-type { border-bottom: 0; }
+
+        .section-number {
+            color: var(--yellow-dark);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1.3px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        h2 {
+            color: var(--black);
+            font-size: 24px;
+            line-height: 1.3;
+            margin-bottom: 14px;
+        }
+
+        h3 {
+            color: var(--black);
+            font-size: 17px;
+            margin: 20px 0 7px;
+        }
+
+        p { margin-bottom: 12px; }
+        p:last-child { margin-bottom: 0; }
+
+        ul {
+            padding-left: 22px;
+            margin: 12px 0;
+        }
+
+        li { margin: 5px 0; }
+
+        .contact-card {
+            background: var(--black);
+            color: #eee;
+            border-left: 4px solid var(--yellow);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 15px;
+        }
+
+        .contact-card strong { color: var(--yellow); }
+        .placeholder { color: var(--yellow); font-weight: 700; }
+
+        .rights {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .rights div {
+            background: var(--soft);
+            border: 1px solid var(--line);
+            border-left: 3px solid var(--yellow);
+            border-radius: 8px;
+            padding: 11px 13px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .legal-link {
+            color: var(--yellow-dark);
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .status {
+            margin-top: 34px;
+            background: var(--soft);
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .status strong { color: var(--black); }
+
+        .site-footer {
+            background: var(--black);
+            color: #fff;
+            border-top: 3px solid var(--yellow);
+        }
+
+        .footer-inner {
+            max-width: 1180px;
+            margin: auto;
+            padding: 24px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .copyright { color: #bdbdbd; font-size: 14px; }
+        .copyright strong { color: var(--yellow); }
+
+        .footer-links {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover,
+        .footer-links .active { color: var(--yellow); }
+
+        @media (max-width: 700px) {
+            .hero { padding: 48px 18px; }
+            main { padding: 38px 16px 58px; }
+            .rights { grid-template-columns: 1fr; }
+            .footer-inner { justify-content: center; text-align: center; }
+            .footer-links { justify-content: center; }
+        }
+
+        @media (max-width: 460px) {
+            .logo { width: 115px; }
+            .back-link .desktop-text { display: none; }
+            h2 { font-size: 21px; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="header-inner">
+        <a href="index.html" aria-label="AS-Xpert Startseite">
+            <img src="images/logo.png" alt="AS-Xpert Autoteile" class="logo">
+        </a>
+        <a href="index.html" class="back-link" aria-label="Zurück zur Startseite">
+            ← <span class="desktop-text">Zurück zur Startseite</span>
+        </a>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-inner">
+        <span class="eyebrow">AS-Xpert Autoteile</span>
+        <h1>Daten<span>schutz</span></h1>
+        <p>Klare Informationen darüber, welche Daten auf unserer Website verarbeitet werden und welche Rechte Sie haben.</p>
+    </div>
+</section>
+
+<main>
+    <div class="container">
+        <div class="notice">
+            <strong>Hinweis:</strong> Diese Datenschutzerklärung beschreibt die typischen Funktionen der AS-Xpert-Website, insbesondere Hosting, Kontaktanfragen und Cookies. Angaben zu tatsächlich eingesetzten Drittanbietern müssen mit Ihrer echten Website-Konfiguration übereinstimmen.
+        </div>
+
+        <nav class="toc" aria-label="Inhalt der Datenschutzerklärung">
+            <div class="toc-title">Schnellnavigation</div>
+            <div class="toc-links">
+                <a href="#verantwortlicher">Verantwortlicher</a>
+                <a href="#hosting">Hosting</a>
+                <a href="#kontakt">Kontakt</a>
+                <a href="#cookies">Cookies</a>
+                <a href="#drittanbieter">Drittanbieter</a>
+                <a href="#rechte">Ihre Rechte</a>
+            </div>
+        </nav>
+
+        <section class="section" id="verantwortlicher">
+            <div class="section-number">01 · Verantwortlicher</div>
+            <h2>Wer ist für Ihre Daten verantwortlich?</h2>
+            <p>Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:</p>
+
+            <div class="contact-card">
+                <p><strong>AS-Xpert Autoteile</strong></p>
+                <p class="placeholder">[Vor- und Nachname / Inhaber]</p>
+                <p class="placeholder">[Straße und Hausnummer]</p>
+                <p class="placeholder">[PLZ] Berlin, Deutschland</p>
+                <br>
+                <p>Telefon: <span class="placeholder">[Telefonnummer]</span></p>
+                <p>E-Mail: <span class="placeholder">[E-Mail-Adresse]</span></p>
+            </div>
+        </section>
+
+        <section class="section" id="grundlagen">
+            <div class="section-number">02 · Grundlagen</div>
+            <h2>Allgemeines zur Datenverarbeitung</h2>
+            <p>Wir verarbeiten personenbezogene Daten nur, wenn dies für den Betrieb der Website, zur Bearbeitung Ihrer Anfrage, zur Durchführung vorvertraglicher oder vertraglicher Maßnahmen, zur Erfüllung gesetzlicher Pflichten oder auf Grundlage eines berechtigten Interesses erforderlich ist.</p>
+            <p>Je nach Verarbeitung kommen insbesondere Art. 6 Abs. 1 lit. a, b, c oder f DSGVO als Rechtsgrundlage in Betracht.</p>
+        </section>
+
+        <section class="section" id="hosting">
+            <div class="section-number">03 · Hosting & Logfiles</div>
+            <h2>Hosting und technische Zugriffsdaten</h2>
+            <p>Beim Aufruf unserer Website können durch den Hosting-Anbieter automatisch technische Daten verarbeitet werden, insbesondere:</p>
+            <ul>
+                <li>IP-Adresse</li>
+                <li>Datum und Uhrzeit des Zugriffs</li>
+                <li>aufgerufene Seite oder Datei</li>
+                <li>Browser und Betriebssystem</li>
+                <li>Referrer-URL</li>
+                <li>übertragene Datenmenge und technische Statusinformationen</li>
+            </ul>
+            <p>Die Verarbeitung erfolgt insbesondere zur sicheren, stabilen und fehlerfreien Bereitstellung der Website. Rechtsgrundlage kann Art. 6 Abs. 1 lit. f DSGVO sein.</p>
+
+            <h3>Hosting-Anbieter</h3>
+            <p class="placeholder">[Name und Anschrift des Hosting-Anbieters eintragen]</p>
+            <p>Sofern der Hosting-Anbieter personenbezogene Daten in unserem Auftrag verarbeitet, wird – soweit erforderlich – ein Vertrag zur Auftragsverarbeitung geschlossen.</p>
+        </section>
+
+        <section class="section" id="kontakt">
+            <div class="section-number">04 · Kontakt</div>
+            <h2>Kontaktformular, E-Mail und Telefon</h2>
+            <p>Wenn Sie uns kontaktieren, verarbeiten wir die von Ihnen übermittelten Angaben ausschließlich zur Bearbeitung Ihrer Anfrage und der damit verbundenen Kommunikation.</p>
+            <p>Je nach Eingabe können insbesondere Name, E-Mail-Adresse, Telefonnummer, Fahrzeugdaten, Angaben zum gesuchten Autoteil und Ihre Nachricht verarbeitet werden.</p>
+            <p>Bei produkt-, preis- oder auftragsbezogenen Anfragen erfolgt die Verarbeitung insbesondere auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO. Bei allgemeinen Anfragen kann Art. 6 Abs. 1 lit. f DSGVO einschlägig sein.</p>
+            <p>Die Daten werden gelöscht, sobald sie für den jeweiligen Zweck nicht mehr erforderlich sind und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</p>
+        </section>
+
+        <section class="section" id="cookies">
+            <div class="section-number">05 · Cookies & Einwilligung</div>
+            <h2>Cookies und ähnliche Technologien</h2>
+            <p>Unsere Website kann technisch erforderliche Cookies oder ähnliche Technologien verwenden. Solche Technologien dienen zum Beispiel der sicheren Bereitstellung grundlegender Website-Funktionen.</p>
+            <p>Nicht technisch erforderliche Cookies oder Technologien – etwa für Analyse, Marketing, externe Medien oder Tracking – werden nur eingesetzt, wenn dafür eine wirksame Einwilligung vorliegt, soweit gesetzlich erforderlich.</p>
+            <p>Eine erteilte Einwilligung kann jederzeit mit Wirkung für die Zukunft über die auf der Website angebotenen Cookie-Einstellungen widerrufen oder geändert werden.</p>
+            <p>Für den Zugriff auf oder die Speicherung von Informationen im Endgerät gelten zusätzlich die einschlägigen Vorgaben des TDDDG.</p>
+        </section>
+
+        <section class="section" id="drittanbieter">
+            <div class="section-number">06 · Externe Dienste</div>
+            <h2>Drittanbieter, eingebettete Inhalte und externe Dienste</h2>
+            <p>Sofern auf unserer Website externe Dienste eingebunden werden – zum Beispiel Karten, Videos, Analyse-Dienste, Social-Media-Inhalte, externe Schriftarten oder Marketing-Technologien – können Daten an den jeweiligen Anbieter übermittelt werden.</p>
+            <p>Einwilligungspflichtige Dienste dürfen erst nach Ihrer Zustimmung geladen werden. In diesem Fall informieren wir innerhalb der Cookie-Einstellungen und/oder in dieser Datenschutzerklärung über Anbieter, Zweck, Rechtsgrundlage, Speicherdauer und mögliche Datenübermittlungen in Drittländer.</p>
+
+            <!--
+                WICHTIG:
+                Wenn Sie z.B. Google Maps, Google Analytics, Meta Pixel,
+                YouTube, reCAPTCHA, WhatsApp-Widgets oder externe Google Fonts
+                verwenden, ergänzen Sie hier einen eigenen Abschnitt mit den
+                echten Angaben des jeweiligen Dienstes.
+            -->
+        </section>
+
+        <section class="section" id="empfaenger">
+            <div class="section-number">07 · Empfänger & Drittländer</div>
+            <h2>Empfänger von Daten und Übermittlungen in Drittländer</h2>
+            <p>Personenbezogene Daten können an Dienstleister weitergegeben werden, wenn dies für Hosting, IT-Betrieb, Kommunikation, Auftragsbearbeitung oder andere zulässige Zwecke erforderlich ist.</p>
+            <p>Soweit ein Dienstleister Daten außerhalb der Europäischen Union bzw. des Europäischen Wirtschaftsraums verarbeitet, erfolgt eine Übermittlung nur unter Beachtung der gesetzlichen Voraussetzungen, beispielsweise auf Grundlage eines Angemessenheitsbeschlusses oder geeigneter Garantien.</p>
+        </section>
+
+        <section class="section" id="sicherheit">
+            <div class="section-number">08 · Sicherheit</div>
+            <h2>SSL-/TLS-Verschlüsselung und Datensicherheit</h2>
+            <p>Unsere Website sollte verschlüsselt über HTTPS bereitgestellt werden. Dadurch werden übertragene Daten, insbesondere Kontaktanfragen, besser vor unbefugtem Zugriff geschützt.</p>
+            <p>Zusätzlich treffen wir angemessene technische und organisatorische Maßnahmen, um personenbezogene Daten vor Verlust, Missbrauch, unbefugtem Zugriff und unzulässiger Veränderung zu schützen.</p>
+        </section>
+
+        <section class="section" id="speicher">
+            <div class="section-number">09 · Speicherdauer</div>
+            <h2>Wie lange speichern wir Daten?</h2>
+            <p>Wir speichern personenbezogene Daten nur so lange, wie sie für den jeweiligen Zweck benötigt werden oder gesetzliche Aufbewahrungspflichten bestehen. Danach werden die Daten gelöscht oder, soweit erforderlich, gesperrt.</p>
+        </section>
+
+        <section class="section" id="rechte">
+            <div class="section-number">10 · Ihre Rechte</div>
+            <h2>Ihre Datenschutzrechte</h2>
+            <p>Unter den gesetzlichen Voraussetzungen haben Sie insbesondere folgende Rechte:</p>
+
+            <div class="rights">
+                <div>Auskunft · Art. 15 DSGVO</div>
+                <div>Berichtigung · Art. 16 DSGVO</div>
+                <div>Löschung · Art. 17 DSGVO</div>
+                <div>Einschränkung · Art. 18 DSGVO</div>
+                <div>Datenübertragbarkeit · Art. 20 DSGVO</div>
+                <div>Widerspruch · Art. 21 DSGVO</div>
+            </div>
+
+            <h3>Widerruf einer Einwilligung</h3>
+            <p>Eine erteilte Einwilligung können Sie jederzeit mit Wirkung für die Zukunft widerrufen. Die Rechtmäßigkeit der Verarbeitung bis zum Widerruf bleibt davon unberührt.</p>
+
+            <h3>Beschwerderecht</h3>
+            <p>Sie haben außerdem das Recht, sich bei einer zuständigen Datenschutzaufsichtsbehörde zu beschweren, wenn Sie der Ansicht sind, dass die Verarbeitung Ihrer personenbezogenen Daten gegen die DSGVO verstößt.</p>
+        </section>
+
+        <section class="section" id="automatisierung">
+            <div class="section-number">11 · Automatisierte Entscheidungen</div>
+            <h2>Automatisierte Entscheidungsfindung</h2>
+            <p>Eine ausschließlich automatisierte Entscheidungsfindung einschließlich Profiling im Sinne von Art. 22 DSGVO findet über diese Website nicht statt, sofern nicht ausdrücklich anders angegeben.</p>
+        </section>
+
+        <section class="section" id="links">
+            <div class="section-number">12 · Externe Links</div>
+            <h2>Links zu anderen Websites</h2>
+            <p>Unsere Website kann Links zu externen Websites enthalten. Für deren Inhalte und Datenschutzpraktiken sind die jeweiligen Betreiber verantwortlich.</p>
+        </section>
+
+        <section class="section" id="aenderungen">
+            <div class="section-number">13 · Änderungen</div>
+            <h2>Aktualisierung dieser Datenschutzerklärung</h2>
+            <p>Wir können diese Datenschutzerklärung anpassen, wenn sich Funktionen der Website, eingesetzte Dienste oder rechtliche Anforderungen ändern. Es gilt die jeweils auf dieser Website veröffentlichte Fassung.</p>
+        </section>
+
+        <div class="status">
+            <strong>Stand:</strong> August 2026 · AS-Xpert Autoteile
+        </div>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="copyright">© 2026 <strong>AS-Xpert Autoteile</strong>. Alle Rechte vorbehalten.</div>
+        <div class="footer-links">
+            <a href="index.html">Startseite</a>
+            <a href="impressum.html">Impressum</a>
+            <a href="datenschutz.html" class="active" aria-current="page">Datenschutz</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
