@@ -1,1376 +1,866 @@
 <!DOCTYPE html>
+
 <html lang="de">
-
 <head>
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="description"
-        content="AS-Xpert Autoteile – hochwertige Autoersatzteile, persönliche Beratung und zuverlässiger Service in Berlin."
-    >
-
-    <title>AS-Xpert Autoteile | Autoersatzteile in Berlin</title>
-
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Google Font -->
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet"
-    >
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="AS-Xpert Autoteile – hochwertige Autoersatzteile, persönliche Beratung und zuverlässiger Service in Berlin." name="description"/>
+<title>AS-Xpert Autoteile | Autoersatzteile in Berlin</title>
+<link href="style.css" rel="stylesheet"/>
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 </head>
-
 <body>
-
-    <!-- Background effects -->
-
-    <div class="background-effects">
-
-        <div class="glow glow-one"></div>
-        <div class="glow glow-two"></div>
-
-        <div class="tire-track tire-track-one"></div>
-        <div class="tire-track tire-track-two"></div>
-
-        <div class="part brake-disc"></div>
-        <div class="part gear"></div>
-        <div class="part spring"></div>
-
-    </div>
-
-
-    <!-- Navigation -->
-
-    <header class="main-header">
-
-        <nav class="navbar">
-
-            <a href="#startseite" class="logo-link">
-
-                <img
-                    src="images/logo.png"
-                    alt="AS-Xpert Autoteile Logo"
-                    class="nav-logo"
-                >
-
-            </a>
-
-            <button
-                class="menu-button"
-                type="button"
-                aria-label="Menü öffnen"
-                aria-expanded="false"
-            >
-                <span></span>
-                <span></span>
-                <span></span>
+<!-- COOKIE CONSENT -->
+<div class="cookie-banner" id="cookieBanner">
+<div class="cookie-box">
+<div class="cookie-icon">🍪</div>
+<div class="cookie-content">
+<h3 data-i18n="cookie_title">Cookies &amp; Datenschutz</h3>
+<p data-i18n-html="cookie_text_html">
+                Wir verwenden technisch notwendige Cookies, um unsere Website
+                sicher und zuverlässig bereitzustellen. Optionale Cookies
+                werden nur mit Ihrer Zustimmung verwendet.
+                Weitere Informationen finden Sie in unserer
+                <a href="datenschutz.html">Datenschutzerklärung</a>.
+            </p>
+</div>
+<div class="cookie-buttons">
+<button class="cookie-btn reject" data-i18n="cookie_reject" id="rejectCookies">
+                Ablehnen
             </button>
+<button class="cookie-btn accept" data-i18n="cookie_accept" id="acceptCookies">
+                Alle akzeptieren
+            </button>
+</div>
+</div>
+</div>
+<script>
 
-            <div class="nav-links">
+document.addEventListener("DOMContentLoaded", function () {
 
-                <a href="#startseite" class="active">
-                    Startseite
-                </a>
+    const cookieBanner =
+        document.getElementById("cookieBanner");
 
-                <a href="#autoteile">
-                    Autoteile
-                </a>
+    const acceptButton =
+        document.getElementById("acceptCookies");
 
-                <a href="#service">
-                    Service
-                </a>
-
-                <a href="#ueber-uns">
-                    Über uns
-                </a>
-
-                <a href="#marken">
-                    Marken
-                </a>
-
-                <a href="#kontakt">
-                    Kontakt
-                </a>
-
-            </div>
-
-            <a
-                href="#kontakt"
-                class="nav-button"
-            >
-                Teil anfragen
-            </a>
-
-        </nav>
-
-    </header>
+    const rejectButton =
+        document.getElementById("rejectCookies");
 
 
-    <main>
+    // Check previous choice
+    const cookieConsent =
+        localStorage.getItem("asxpert-cookie-consent");
 
-        <!-- Hero section -->
 
-        <section
-            class="hero"
-            id="startseite"
-        >
+    // Show banner if user has never chosen
+    if (!cookieConsent) {
 
-            <div class="hero-content">
+        setTimeout(function () {
 
-                <span class="hero-label">
-                    Premium Autoteile in Berlin
-                </span>
+            cookieBanner.classList.add("show");
 
-                <h1>
-                    KFZ-ERSATZTEILE
-                    <span>alle Marken</span>
-                </h1>
+        }, 500);
 
-                <p class="hero-description">
-                    Qualität, Kompetenz und zuverlässiger Service.
-                    Wir helfen, das passende Ersatzteil für Ihr
-                    Fahrzeug schnell und unkompliziert zu finden.
-                </p>
+    }
 
-                <div class="hero-buttons">
 
-                    <a
-                        href="#kontakt"
-                        class="primary-button"
-                    >
+    // ACCEPT
+    acceptButton.addEventListener("click", function () {
+
+        localStorage.setItem(
+            "asxpert-cookie-consent",
+            "accepted"
+        );
+
+        cookieBanner.classList.remove("show");
+
+        enableOptionalCookies();
+
+    });
+
+
+    // REJECT
+    rejectButton.addEventListener("click", function () {
+
+        localStorage.setItem(
+            "asxpert-cookie-consent",
+            "rejected"
+        );
+
+        cookieBanner.classList.remove("show");
+
+    });
+
+
+    // If already accepted
+    if (cookieConsent === "accepted") {
+
+        enableOptionalCookies();
+
+    }
+
+
+});
+
+
+/* =========================================
+   OPTIONAL COOKIES
+========================================= */
+
+function enableOptionalCookies() {
+
+    console.log("Optional cookies accepted.");
+
+    /*
+       Later you can put things here such as:
+
+       - Google Analytics
+       - Google Ads
+       - Meta Pixel
+       - Tracking scripts
+
+       They should NOT load before consent.
+    */
+
+}
+
+</script>
+<!-- Background effects -->
+<div class="background-effects">
+<div class="glow glow-one"></div>
+<div class="glow glow-two"></div>
+<div class="tire-track tire-track-one"></div>
+<div class="tire-track tire-track-two"></div>
+<div class="part brake-disc"></div>
+<div class="part gear"></div>
+<div class="part spring"></div>
+</div>
+<!-- Navigation -->
+<header class="main-header">
+<nav class="navbar">
+<a class="logo-link" href="#startseite">
+<img alt="AS-Xpert Autoteile Logo" class="nav-logo" src="images/logo.png"/>
+</a>
+<button aria-expanded="false" aria-label="Menü öffnen" class="menu-button" data-i18n-aria-label="aria_menu" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+<div class="nav-links">
+<a class="active" data-i18n="nav_home" href="#startseite">
+        Startseite
+    </a>
+<a data-i18n="nav_parts" href="#autoteile">
+        Autoteile
+    </a>
+<a data-i18n="nav_service" href="#service">
+        Service
+    </a>
+<a data-i18n="nav_about" href="#ueber-uns">
+        Über uns
+    </a>
+<a data-i18n="nav_brands" href="#marken">
+        Marken
+    </a>
+<a data-i18n="nav_contact" href="#kontakt">
+        Kontakt
+    </a>
+</div>
+<a class="nav-button" data-i18n="request_part_short" href="#kontakt">
+    Teil anfragen
+</a>
+</nav>
+<div class="language-switcher">
+<button aria-pressed="true" class="lang-btn active" data-lang="de" type="button">DE</button>
+<button aria-pressed="false" class="lang-btn" data-lang="en" type="button">EN</button>
+<button aria-pressed="false" class="lang-btn" data-lang="ar" type="button">AR</button>
+</div>
+</header>
+<main>
+<!-- Hero section -->
+<section class="hero" id="startseite">
+<div class="hero-content">
+<span class="hero-label" data-i18n="hero_label">Premium-Autoteile in Berlin</span>
+<h1 data-i18n-html="hero_heading">KFZ-ERSATZTEILE <span>aller marken</span></h1>
+<p class="hero-description" data-i18n="hero_text">Qualität, Kompetenz und zuverlässiger Service. Wir helfen Ihnen, schnell und unkompliziert das passende Ersatzteil für Ihr Fahrzeug zu finden.</p>
+<div class="hero-buttons">
+<a class="primary-button" data-i18n="hero_request" href="#kontakt">
                         Jetzt Teil anfragen
                     </a>
-
-                    <a
-                        href="#autoteile"
-                        class="secondary-button"
-                    >
+<a class="secondary-button" data-i18n="hero_products" href="#autoteile">
                         Sortiment ansehen
                     </a>
-
-                </div>
-
-                <div class="hero-features">
-
-                    <div class="hero-feature">
-
-                        <strong>✓</strong>
-
-                        <span>
+</div>
+<div class="hero-features">
+<div class="hero-feature">
+<strong>✓</strong>
+<span data-i18n="benefit_selection_title">
                             Große Teileauswahl
                         </span>
-
-                    </div>
-
-                    <div class="hero-feature">
-
-                        <strong>✓</strong>
-
-                        <span>
+</div>
+<div class="hero-feature">
+<strong>✓</strong>
+<span data-i18n="benefit_advice_title">
                             Professioneller Service mit Beratung
                         </span>
-
-                    </div>
-
-                    <div class="hero-feature">
-
-                        <strong>✓</strong>
-
-                        <span>
+</div>
+<div class="hero-feature">
+<strong>✓</strong>
+<span data-i18n="benefit_delivery_title">
                             Schnelle Lieferung
                         </span>
-
-                    </div>
-                    
-
-                </div>
-
-            </div>
-
-
-            <div class="hero-image-area">
-
-                <div class="flyer-container">
-
-    <div class="flyer-glow"></div>
-
-    <div class="flyer-slider">
-
-        <div class="flyer-track">
-
-            <div class="flyer-slide">
-                <img
-                    src="images/flyer14.png"
-                    alt="AS-Xpert Flyer 13"
-                    class="flyer"
-                >
-            </div>
-
-            <div class="flyer-slide">
-                <img
-                    src="images/flyer11.png"
-                    alt="AS-Xpert Flyer 11"
-                    class="flyer"
-                >
-            </div>
-
-            <div class="flyer-slide">
-                <img
-                    src="images/flyer12.png"
-                    alt="AS-Xpert Flyer 12"
-                    class="flyer"
-                >
-            </div>
-
-            <div class="flyer-slide">
-                <img
-                    src="images/flyer10.png"
-                    alt="AS-Xpert Flyer 10"
-                    class="flyer"
-                >
-            </div>
-
-        </div>
-
-    </div>
-
-    <button
-        class="flyer-arrow flyer-arrow-left"
-        type="button"
-        aria-label="Previous flyer"
-    >
-        &#10094;
-    </button>
-
-    <button
-        class="flyer-arrow flyer-arrow-right"
-        type="button"
-        aria-label="Next flyer"
-    >
-        &#10095;
-    </button>
-
-    <div class="flyer-dots">
-
-        <button
-            class="flyer-dot active"
-            type="button"
-            aria-label="Show flyer 1"
-        ></button>
-
-        <button
-            class="flyer-dot"
-            type="button"
-            aria-label="Show flyer 2"
-        ></button>
-
-        <button
-            class="flyer-dot"
-            type="button"
-            aria-label="Show flyer 3"
-        ></button>
-
-        <button
-            class="flyer-dot"
-            type="button"
-            aria-label="Show flyer 4"
-        ></button>
-
-    </div>
-
 </div>
-
-                <div class="floating-card card-one">
-
-                    <span class="floating-icon">⚙</span>
-
-                    <div>
-                        <strong>Qualitätsteile</strong>
-                        <small>Für diverse Fahrzeugmodelle</small>
-                    </div>
-
-                </div>
-
-                <div class="floating-card card-two">
-
-                    <span class="floating-icon">✓</span>
-
-                    <div>
-                        <strong>Expertenservice</strong>
-                        <small>Kundenorientierte Fachberatung</small>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- Benefits -->
-
-        <section class="benefits-section">
-
-            <div class="section-container benefits-grid">
-
-                <article class="benefit-card">
-
-                    <div class="benefit-icon">
+</div>
+</div>
+<div class="hero-image-area">
+<div class="flyer-container">
+<div class="flyer-glow"></div>
+<div class="flyer-slider">
+<div class="flyer-track">
+<div class="flyer-slide">
+<img alt="AS-Xpert Flyer 13" class="flyer" src="images/flyer14.png"/>
+</div>
+<div class="flyer-slide">
+<img alt="AS-Xpert Flyer 11" class="flyer" src="images/flyer11.png"/>
+</div>
+<div class="flyer-slide">
+<img alt="AS-Xpert Flyer 12" class="flyer" src="images/flyer12.png"/>
+</div>
+<div class="flyer-slide">
+<img alt="AS-Xpert Flyer 10" class="flyer" src="images/flyer10.png"/>
+</div>
+</div>
+</div>
+<button aria-label="Previous flyer" class="flyer-arrow flyer-arrow-left" data-i18n-aria-label="aria_previous_flyer" type="button">
+        ❮
+    </button>
+<button aria-label="Next flyer" class="flyer-arrow flyer-arrow-right" data-i18n-aria-label="aria_next_flyer" type="button">
+        ❯
+    </button>
+<div class="flyer-dots">
+<button aria-label="Show flyer 1" class="flyer-dot active" data-i18n-aria-label="aria_flyer_1" type="button"></button>
+<button aria-label="Show flyer 2" class="flyer-dot" data-i18n-aria-label="aria_flyer_2" type="button"></button>
+<button aria-label="Show flyer 3" class="flyer-dot" data-i18n-aria-label="aria_flyer_3" type="button"></button>
+<button aria-label="Show flyer 4" class="flyer-dot" data-i18n-aria-label="aria_flyer_4" type="button"></button>
+</div>
+</div>
+<div class="floating-card card-one">
+<span class="floating-icon">⚙</span>
+<div>
+<strong data-i18n="floating_quality_title">Qualitätsteile</strong>
+<small data-i18n="floating_quality_text">Für diverse Fahrzeugmodelle</small>
+</div>
+</div>
+<div class="floating-card card-two">
+<span class="floating-icon">✓</span>
+<div>
+<strong data-i18n="floating_expert_title">Expertenservice</strong>
+<small data-i18n="floating_expert_text">Kundenorientierte Fachberatung</small>
+</div>
+</div>
+</div>
+</section>
+<!-- Benefits -->
+<section class="benefits-section">
+<div class="section-container benefits-grid">
+<article class="benefit-card">
+<div class="benefit-icon">
                         ⚙
                     </div>
-
-                    <div>
-
-                        <h3>
+<div>
+<h3 data-i18n="benefit_selection_title">
                             Große Teileauswahl
                         </h3>
-
-                        <p>
+<p data-i18n="benefit_selection_text">
                             Ersatzteile und Zubehör für bekannte
                             Fahrzeughersteller und Modelle
                         </p>
-
-                    </div>
-
-                </article>
-
-
-                <article class="benefit-card">
-
-                    <div class="benefit-icon">
+</div>
+</article>
+<article class="benefit-card">
+<div class="benefit-icon">
                         👤
                     </div>
-
-                    <div>
-
-                        <h3>
+<div>
+<h3 data-i18n="benefit_advice_title">
                            Professioneller Service mit Beratung
                         </h3>
-
-                        <p>
+<p data-i18n="benefit_advice_text">
                             Wir unterstützen und beraten fachkundig bei der Suche nach dem
                             passenden Teil für Ihr Fahrzeug 
                         </p>
-
-                    </div>
-
-                </article>
-
-
-                <article class="benefit-card">
-
-                    <div class="benefit-icon">
+</div>
+</article>
+<article class="benefit-card">
+<div class="benefit-icon">
                         🚚
                     </div>
-
-                    <div>
-
-                        <h3>
+<div>
+<h3 data-i18n="benefit_delivery_title">
                             Schnelle Lieferung
                         </h3>
-
-                        <p>
+<p data-i18n="benefit_delivery_text">
                             Schnelle Bearbeitung Ihrer Anfrage und
                             zuverlässige Lieferung/Zustellung
                         </p>
-
-                    </div>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- Product categories -->
-
-        <section
-            class="categories-section"
-            id="autoteile"
-        >
-
-            <div class="section-container">
-
-                <div class="section-heading">
-
-                    <span class="section-label">
+</div>
+</article>
+</div>
+</section>
+<!-- Product categories -->
+<section class="categories-section" id="autoteile">
+<div class="section-container">
+<div class="section-heading">
+<span class="section-label" data-i18n="categories_label">
                         Unser Sortiment
                     </span>
-
-                    <h2>
+<h2 data-i18n="categories_title">
                         Autoteile für Ihr Fahrzeug
                     </h2>
-
-                    <p>
+<p data-i18n="categories_text">
                         Entdecken Sie unsere Produktvielfalt. Für weitere Fahrzeugteile und individuelle Anfragen stehen wir Ihnen gerne direkt zur Verfügung.
                     </p>
-
-                </div>
-
-
-                <div class="categories-grid">
-
-                    <article class="category-card">
-
-                        <div class="category-icon">
-                            🛞
-                        </div>
-
-                        <h3>
-                            Bremsanlage
-                        </h3>
-
-                        <p>
-                            Bremsscheiben, Bremsbeläge,
-                            Bremssättel und Zubehör
-                        </p>
-
-                        <a href="#kontakt">
-                            Teil anfragen →
-                        </a>
-
-                    </article>
-
-
-                    <article class="category-card">
-
-                        <div class="category-icon">
-                            ⚙
-                        </div>
-
-                        <h3>
-                            Motorenteile
-                        </h3>
-
-                        <p>
-                            Motorkomponenten, Dichtungen,
-                            Riemen, Steuerketten, Zahnriemen und weitere Ersatzteile
-                        </p>
-
-                        <a href="#kontakt">
-                            Teil anfragen →
-                        </a>
-
-                    </article>
-
-
-                    <article class="category-card">
-
-                        <div class="category-icon">
-                            🛢
-                        </div>
-
-                        <h3>
-                            Öl und Filter
-                        </h3>
-
-                        <p>
-                            Motoröl, Ölfilter, Luftfilter,
-                            Innenraumfilter Kraftstofffilter u.w.
-                        </p>
-
-                        <a href="#kontakt">
-                            Teil anfragen →
-                        </a>
-
-                    </article>
-
-
-                    <article class="category-card">
-
-                        <div class="category-icon">
-                            🔋
-                        </div>
-
-                        <h3>
-                            Elektrik und Batterien
-                        </h3>
-
-                        <p>
-                            Fahrzeugbatterien, Sensoren,
-                            Schalter, Lichtmaschinen u.v.m.
-                        </p>
-
-                        <a href="#kontakt">
-                            Teil anfragen →
-                        </a>
-
-                    </article>
-
-
-                    <article class="category-card">
-
-                        <div class="category-icon">
-                            🔧
-                        </div>
-
-                        <h3>
-                            Fahrwerk und Lenkung
-                        </h3>
-
-                        <p>
-                            Stoßdämpfer, Federn, Querlenker,
-                            Lager und Lenkungsteile
-                        </p>
-
-                        <a href="#kontakt">
-                            Teil anfragen →
-                        </a>
-
-                    </article>
-
-
-                    <article class="category-card">
-
-                        <div class="category-icon">
-                            💡
-                        </div>
-
-                        <h3>
-                            Beleuchtung
-                        </h3>
-
-                        <p>
-                            Scheinwerfer, Rückleuchten,
-                            Lampen und Beleuchtungszubehör
-                        </p>
-
-                        <a href="#kontakt">
-                            Teil anfragen →
-                        </a>
-
-                    </article>
-
-
-                    <article class="category-card">
-
-                        <div class="category-icon">
-                            🚘
-                        </div>
-
-                        <h3>
-                            Karosserie und Scheiben
-                        </h3>
-
-                        <p>
-                            Spiegel, Scheiben, Stoßfänger, Kotflügel
-                            und weitere Karosserieteile
-                        </p>
-
-                        <a href="#kontakt">
-                            Teil anfragen →
-                        </a>
-
-                    </article>
-
-
-                    <article class="category-card">
-
-                        <div class="category-icon">
-                            ❄
-                        </div>
-
-                        <h3>
-                            Kühlung und Klima
-                        </h3>
-
-                        <p>
-                            Kühler, Thermostate, Wasserpumpen
-                            und Klimaanlagenteile
-                        </p>
-
-                        <a href="#kontakt">
-                            Teil anfragen →
-                        </a>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- Services -->
-
-        <section
-            class="service-section"
-            id="service"
-        >
-
-            <div class="section-container service-layout">
-
-                <div class="service-content">
-
-                    <span class="section-label">
+</div>
+<div class="categories-grid">
+<!-- Bremsanlage -->
+<article class="category-card">
+<div class="category-icon">
+<img alt="Bremsanlage" data-i18n-alt="category_brakes_title" src="images/icons/brakes.png"/>
+</div>
+<h3 data-i18n="category_brakes_title">Bremsanlage</h3>
+<p data-i18n="category_brakes_text">
+            Bremsscheiben, Bremsbeläge,
+            Bremssättel und Zubehör
+        </p>
+<a data-i18n="category_request" href="#kontakt">
+            Teil anfragen →
+        </a>
+</article>
+<!-- Motorenteile -->
+<article class="category-card">
+<div class="category-icon">
+<img alt="Motorenteile" data-i18n-alt="category_engine_title" src="images/icons/engine.png"/>
+</div>
+<h3 data-i18n="category_engine_title">Motorenteile</h3>
+<p data-i18n="category_engine_text">
+            Motorkomponenten, Dichtungen,
+            Riemen, Steuerketten, Zahnriemen
+            und weitere Ersatzteile
+        </p>
+<a data-i18n="category_request" href="#kontakt">
+            Teil anfragen →
+        </a>
+</article>
+<!-- Öl und Filter -->
+<article class="category-card">
+<div class="category-icon">
+<img alt="Öl und Filter" data-i18n-alt="category_oil_title" src="images/icons/oil-filter.png"/>
+</div>
+<h3 data-i18n="category_oil_title">Öl und Filter</h3>
+<p data-i18n="category_oil_text">Motoröl, Ölfilter, Luftfilter, Innenraumfilter, Kraftstofffilter und vieles mehr.</p>
+<a data-i18n="category_request" href="#kontakt">
+            Teil anfragen →
+        </a>
+</article>
+<!-- Elektrik und Batterien -->
+<article class="category-card">
+<div class="category-icon">
+<img alt="Elektrik und Batterien" data-i18n-alt="category_electric_title" src="images/icons/battery.png"/>
+</div>
+<h3 data-i18n="category_electric_title">Elektrik und Batterien</h3>
+<p data-i18n="category_electric_text">
+            Fahrzeugbatterien, Sensoren,
+            Schalter, Lichtmaschinen u. v. m.
+        </p>
+<a data-i18n="category_request" href="#kontakt">
+            Teil anfragen →
+        </a>
+</article>
+<!-- Fahrwerk und Lenkung -->
+<article class="category-card">
+<div class="category-icon">
+<img alt="Fahrwerk und Lenkung" data-i18n-alt="category_suspension_title" src="images/icons/suspension.png"/>
+</div>
+<h3 data-i18n="category_suspension_title">Fahrwerk und Lenkung</h3>
+<p data-i18n="category_suspension_text">
+            Stoßdämpfer, Federn, Querlenker,
+            Lager und Lenkungsteile
+        </p>
+<a data-i18n="category_request" href="#kontakt">
+            Teil anfragen →
+        </a>
+</article>
+<!-- Beleuchtung -->
+<article class="category-card">
+<div class="category-icon">
+<img alt="Beleuchtung" data-i18n-alt="category_lighting_title" src="images/icons/headlight.png"/>
+</div>
+<h3 data-i18n="category_lighting_title">Beleuchtung</h3>
+<p data-i18n="category_lighting_text">
+            Scheinwerfer, Rückleuchten,
+            Lampen und Beleuchtungszubehör
+        </p>
+<a data-i18n="category_request" href="#kontakt">
+            Teil anfragen →
+        </a>
+</article>
+<!-- Karosserie und Scheiben -->
+<article class="category-card">
+<div class="category-icon">
+<img alt="Karosserie und Scheiben" data-i18n-alt="category_body_title" src="images/icons/body-parts.png"/>
+</div>
+<h3 data-i18n="category_body_title">Karosserie und Scheiben</h3>
+<p data-i18n="category_body_text">
+            Spiegel, Scheiben, Stoßfänger,
+            Kotflügel und weitere Karosserieteile
+        </p>
+<a data-i18n="category_request" href="#kontakt">
+            Teil anfragen →
+        </a>
+</article>
+<!-- Kühlung und Klima -->
+<article class="category-card">
+<div class="category-icon">
+<img alt="Kühlung und Klima" data-i18n-alt="category_cooling_title" src="images/icons/cooling.png"/>
+</div>
+<h3 data-i18n="category_cooling_title">Kühlung und Klima</h3>
+<p data-i18n="category_cooling_text">
+            Kühler, Thermostate, Wasserpumpen
+            und Klimaanlagenteile
+        </p>
+<a data-i18n="category_request" href="#kontakt">
+            Teil anfragen →
+        </a>
+</article>
+</div>
+</div>
+</section>
+<!-- Services -->
+<section class="service-section" id="service">
+<div class="section-container service-layout">
+<div class="service-content">
+<span class="section-label" data-i18n="service_label">
                         Unser Service
                     </span>
-
-                    <h2>
+<h2 data-i18n="service_title">
                         Schnell zum passenden Ersatzteil
                     </h2>
-
-                    <p>
+<p data-i18n="service_text">
                         Teilen Sie uns Ihre Fahrzeugdaten oder die Original-Teilenummer mit – wir finden für Sie schnell und zuverlässig das passende Ersatzteil.
                     </p>
-
-                    <div class="service-list">
-
-                        <div class="service-list-item">
-
-                            <span>01</span>
-
-                            <div>
-
-                                <h3>
+<div class="service-list">
+<div class="service-list-item">
+<span>01</span>
+<div>
+<h3 data-i18n="service_vehicle_title">
                                     Fahrzeugdaten übermitteln
                                 </h3>
-
-                                <p>
+<p data-i18n="service_vehicle_text">
                                   Teilen Sie uns die wichtigsten Fahrzeugdaten mit – Marke, Modell, Baujahr und Fahrgestellnummer (FIN)
                                 </p>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="service-list-item">
-
-                            <span>02</span>
-
-                            <div>
-
-                                <h3>
+</div>
+</div>
+<div class="service-list-item">
+<span>02</span>
+<div>
+<h3 data-i18n="service_check_title">
                                     Passendes Ersatzteil prüfen lassen
                                 </h3>
-
-                                <p>
+<p data-i18n="service_check_text">
                                  Anhand Ihrer Fahrzeugdaten prüfen wir, welche Ersatzteile für Ihr Fahrzeug geeignet sind   
                                 </p>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="service-list-item">
-
-                            <span>03</span>
-
-                            <div>
-
-                                <h3>
+</div>
+</div>
+<div class="service-list-item">
+<span>03</span>
+<div>
+<h3 data-i18n="service_offer_title">
                                     Angebot erhalten
                                 </h3>
-
-                                <p>
+<p data-i18n="service_offer_text">
                                     Anschließend erhalten Sie Informationen zur Verfügbarkeit sowie ein individuelles Preisangebot
                                 </p>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <a
-                        href="#kontakt"
-                        class="primary-button"
-                    >
+</div>
+</div>
+</div>
+<a class="primary-button" data-i18n="service_cta" href="#kontakt">
                         Anfrage senden
                     </a>
+</div>
+<div class="service-visual">
+<div class="service-visual-card">
 
-                </div>
+    <div class="delivery-icon">
+    <img src="images/icons/delivery.png" alt="Lieferung">
+</div>
 
+    <h3 data-i18n="service_card_title">
+        AS-Xpert Lieferung
+    </h3>
 
-                <div class="service-visual">
+    <p data-i18n="service_card_text">
+    Schnelle und zuverlässige Lieferung Ihrer Ersatzteile –
+    direkt und unkompliziert.
+</p>
 
-                    <div class="service-visual-card">
+    <div class="delivery-features">
+    <span>✓ Schnelle Auftragsbearbeitung</span>
+    <span>✓ Zuverlässige Zustellung</span>
+    <span>✓ Flexible Lieferoptionen</span>
+</div>
 
-                        <div class="large-gear">
-                            ⚙
-                        </div>
-
-                        <h3>
-                            AS-Xpert Service
-                        </h3>
-
-                        <p>
-                            Qualitätsteile. Expertenservice.
-                            Angetrieben von Vertrauen.
-                        </p>
-
-                        <div class="service-stat">
-
-                            <strong>
-                                Zahlreiche
-                            </strong>
-
-                            <span>
-                                Fahrzeugmarken
-                            </span>
-
-                        </div>
-
-                        <div class="service-stat">
-
-                            <strong>
-                                Professionelle
-                            </strong>
-
-                            <span>
-                                Beratung und Betreuung
-                            </span>
-
-                        </div>
-
-                        <div class="service-stat">
-
-                            <strong>
-                                Schnelle
-                            </strong>
-
-                            <span>
-                                Bearbeitung und Lieferung
-                            </span>
-
-                        </div>
-
+</div>
+</div>
+</section>
+<!-- Brands -->
+<section class="brands-section" id="marken">
+<div class="section-container">
+<div class="section-heading">
+<span class="section-label" data-i18n="brands_label">
+                        Fahrzeugmarken
+                    </span>
+<h2 data-i18n="brands_title">
+                        Entdecken Sie Qualitätsteile für die beliebtesten Automarken
+                    </h2>
+<p data-i18n="brands_text">
+                        Fragen Sie uns nach dem passenden Ersatzteil für Ihr Fahrzeug – abgestimmt auf Marke und Modell.
+                    </p>
+</div>
+<div class="brands-grid">
+<div class="brand-card">
+                        Mercedes-Benz
                     </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- About -->
-
-        <section
-            class="about-section"
-            id="ueber-uns"
-        >
-
-            <div class="section-container about-layout">
-
-                <div class="about-image">
-
-                    <div class="about-logo-card">
-
-                        <img
-                            src="images/logo.png"
-                            alt="AS-Xpert Autoteile"
-                        >
-
+<div class="brand-card">
+                        BMW
                     </div>
-
-                </div>
-
-
-                <div class="about-content">
-
-                    <span class="section-label">
+<div class="brand-card">
+                        Audi
+                    </div>
+<div class="brand-card">
+                        Volkswagen
+                    </div>
+<div class="brand-card">
+                        Opel
+                    </div>
+<div class="brand-card">
+                        Ford
+                    </div>
+<div class="brand-card">
+                        Renault
+                    </div>
+<div class="brand-card">
+                        Toyota
+                    </div>
+<div class="brand-card">
+                        Peugeot
+                    </div>
+<div class="brand-card">
+                        Citroën
+                    </div>
+<div class="brand-card">
+                        Hyundai
+                    </div>
+<div class="brand-card">
+                        Kia
+                    </div>
+<div class="brand-card">
+                        Seat
+                    </div>
+<div class="brand-card">
+                        Škoda
+                    </div>
+<div class="brand-card">
+                        Volvo
+                    </div>
+<div class="brand-card">
+                        Mazda
+                    </div>
+<div class="brand-card">
+                        Tesla
+                    </div>
+<div class="brand-card">
+                        Porsche
+                    </div>
+<div class="brand-card">
+                        Dacia
+                    </div>
+<div class="brand-card">
+                        Fiat
+                    </div>
+<p class="more-brands" data-i18n="brands_more">
+    … und viele weitere Fahrzeugmarken
+                </p>
+</div>
+</div>
+</section>
+<!-- About -->
+<section class="about-section" id="ueber-uns">
+<div class="section-container about-layout">
+<div class="about-image">
+<div class="about-logo-card">
+<img alt="AS-Xpert Autoteile" src="images/logo.png"/>
+</div>
+</div>
+<div class="about-content">
+<span class="section-label" data-i18n="about_label">
                         Über AS-Xpert
                     </span>
-
-                    <h2>
+<h2 data-i18n="about_title">
                         Ihr Partner für Autoersatzteile in Berlin
                     </h2>
-
-                    <p>
+<p data-i18n="about_text_1">
                         AS-Xpert Autoteile steht für Qualität, Zuverlässigkeit und Kompetenz. Mit professioneller Beratung, hochwertigen Ersatzteilen und einem zuverlässigen Service bieten wir Ihnen die passende Lösung für Ihr Fahrzeug.
                     </p>
-
-                    <p>
+<p data-i18n="about_text_2">
                         Unser Ziel ist es, die Suche nach dem
                         passenden Ersatzteil so einfach wie möglich zu
                         gestalten – unabhängig von Fahrzeugmarke und Modell.
                     </p>
-
-                    <div class="about-points">
-
-                        <div>
-                            <span>✓</span>
+<div class="about-points">
+<div data-i18n-html="about_point_parts">
+<span>✓</span>
                             Original- und Ersatzteile
                         </div>
-
-                        <div>
-                            <span>✓</span>
+<div data-i18n-html="about_point_prices">
+<span>✓</span>
                             Faire und transparente Preise
                         </div>
-
-                        <div>
-                            <span>✓</span>
+<div data-i18n-html="about_point_selection">
+<span>✓</span>
                             Unterstützung bei der Teileauswahl
                         </div>
-
-                        <div>
-                            <span>✓</span>
+<div data-i18n-html="about_point_support">
+<span>✓</span>
                             Zuverlässige Kundenbetreuung
                         </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- Brands -->
-
-        <section
-            class="brands-section"
-            id="marken"
-        >
-
-            <div class="section-container">
-
-                <div class="section-heading">
-
-                    <span class="section-label">
-                        Fahrzeugmarken
-                    </span>
-
-                    <h2>
-                        Autoteile für viele Fahrzeugmarken
-                    </h2>
-
-                    <p>
-                        Fragen Sie uns nach dem passenden Ersatzteil für Ihr Fahrzeug – abgestimmt auf Marke und Modell.
-                    </p>
-
-                </div>
-
-
-                <div class="brands-grid">
-
-                    <div class="brand-card">
-                        Mercedes-Benz
-                    </div>
-
-                    <div class="brand-card">
-                        BMW
-                    </div>
-
-                    <div class="brand-card">
-                        Audi
-                    </div>
-
-                    <div class="brand-card">
-                        Volkswagen
-                    </div>
-
-                    <div class="brand-card">
-                        Opel
-                    </div>
-
-                    <div class="brand-card">
-                        Ford
-                    </div>
-
-                    <div class="brand-card">
-                        Renault
-                    </div>
-
-                    <div class="brand-card">
-                        Toyota
-                    </div>
-
-                    <div class="brand-card">
-                        Peugeot
-                    </div>
-
-                    <div class="brand-card">
-                        Citroën
-                    </div>
-
-                    <div class="brand-card">
-                        Hyundai
-                    </div>
-
-                    <div class="brand-card">
-                        Kia
-                    </div>
-
-                    <div class="brand-card">
-                        Seat
-                    </div>
-
-                    <div class="brand-card">
-                        Škoda
-                    </div>
-
-                    <div class="brand-card">
-                        Volvo
-                    </div>
-
-                    <div class="brand-card">
-                        Mazda
-                    </div>
-
-                    <div class="brand-card">
-                        Tesla
-                    </div>
-
-                    <div class="brand-card">
-                        Porsche
-                    </div>
-
-                    <div class="brand-card">
-                        Dacia
-                    </div>
-
-                    <div class="brand-card">
-                        Fiat
-                    </div>
-<p class="more-brands">
-    … und viele weitere Fahrzeugmarken
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- Contact -->
-
-        <section
-            class="contact-section"
-            id="kontakt"
-        >
-
-            <div class="section-container contact-layout">
-
-                <div class="contact-information">
-
-                    <span class="section-label">
+</div>
+</div>
+</div>
+</section>
+<!-- Contact -->
+<section class="contact-section" id="kontakt">
+<div class="section-container contact-layout">
+<div class="contact-information">
+<span class="section-label" data-i18n="contact_label">
                         Kontakt
                     </span>
-
-                    <h2>
+<h2 data-i18n="contact_title">
                         Welches Ersatzteil benötigen Sie?
                     </h2>
-
-                    <p>
+<p data-i18n="contact_text">
                         Kontaktieren Sie uns telefonisch, per E-Mail
                         oder senden Sie uns direkt eine Anfrage per WhatsApp.
                     </p>
-
-
-                    <div class="contact-details">
-
-                        <a
-                            href="tel:+4917614114137"
-                            class="contact-item"
-                        >
-
-                            <span class="contact-icon">
+<div class="contact-details">
+<a class="contact-item" href="tel:+4917614114137">
+<span class="contact-icon">
                                 ☎
                             </span>
-
-                            <div>
-
-                                <small>
+<div>
+<small data-i18n="contact_phone">
                                     Telefon
                                 </small>
-
-                                <strong>
+<strong>
                                     +49 176 141 141 37
                                 </strong>
-
-                            </div>
-
-                        </a>
-
-
-                        <a
-                            href="mailto:info@as-xpertautoteile.de"
-                            class="contact-item"
-                        >
-
-                            <span class="contact-icon">
+</div>
+</a>
+<a class="contact-item" href="mailto:info@as-xpertautoteile.de">
+<span class="contact-icon">
                                 ✉
                             </span>
-
-                            <div>
-
-                                <small>
+<div>
+<small data-i18n="contact_email">
                                     E-Mail
                                 </small>
-
-                                <strong>
+<strong>
                                     info@as-xpertautoteile.de
                                 </strong>
-
-                            </div>
-
-                        </a>
-
-
-                        <div class="contact-item">
-
-                            <span class="contact-icon">
+</div>
+</a>
+<div class="contact-item">
+<span class="contact-icon">
                                 📍
                             </span>
-
-                            <div>
-
-                                <small>
+<div>
+<small data-i18n="contact_address">
                                     Adresse
                                 </small>
-
-                               <strong>
-    <a href="https://www.google.com/maps/search/?api=1&query=Mohriner+Allee+30-36,+12347+Berlin"
-       target="_blank"
-       rel="noopener noreferrer">
-        Mohriner Allee 30–36,<br>
+<strong>
+<a href="https://www.google.com/maps/search/?api=1&amp;query=Mohriner+Allee+30-36,+12347+Berlin" rel="noopener noreferrer" target="_blank">
+        Mohriner Allee 30–36,<br/>
         12347 Berlin
     </a>
 </strong>
-                            </div>
-
-                        </div>
-
-
-                        <div class="contact-item">
-
-                            <span class="contact-icon">
+</div>
+</div>
+<div class="contact-item">
+<span class="contact-icon">
                                 ◷
                             </span>
-
-                            <div>
-
-                                <small>
+<div>
+<small data-i18n="contact_hours">
                                     Öffnungszeiten
                                 </small>
-
-                                <strong>
+<strong data-i18n="contact_hours_weekdays">
                                     Mo–Fr: 09:00–18:00
                                 </strong>
-                                <strong>
-                                    Sa: 09:00–14:00
+<strong data-i18n="contact_hours_saturday">
+                                    Sa: 09:00–16:00
                                 </strong>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-               <form
-    class="contact-form"
-    action="#"
-    method="post"
-    enctype="multipart/form-data"
->
-
-                    <h3>
+</div>
+</div>
+</div>
+</div>
+<form action="send-mail.php" class="contact-form" enctype="multipart/form-data" method="post">
+<h3 data-i18n="form_title">
                         Ersatzteil anfragen
                     </h3>
-
-                    <div class="form-row">
-
-                        <div class="form-group">
-
-                            <label for="name">
+<div class="form-row">
+<div class="form-group">
+<label data-i18n="form_name" for="name">
                                 Vor- und Nachname
                             </label>
-
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                placeholder="Ihr vollständiger Name"
-                                required
-                            >
-
-                        </div>
-
-                        <div class="form-group">
-
-                            <label for="phone">
+<input autocomplete="name" data-i18n-placeholder="ph_name" id="name" name="name" placeholder="Ihr vollständiger Name" required="" type="text"/>
+</div>
+<div class="form-group">
+<label data-i18n="form_phone" for="phone">
                                 Telefon
                             </label>
-
-                            <input
-                                type="tel"
-                                id="phone"
-                                name="phone"
-                                placeholder="+49 ..."
-                            >
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="form-row">
-
-                        <div class="form-group">
-
-                            <label for="email">
+<input autocomplete="tel" data-i18n-placeholder="ph_phone" id="phone" name="phone" placeholder="+49 ..." type="tel"/>
+</div>
+</div>
+<div class="form-row">
+<div class="form-group">
+<label data-i18n="form_email" for="email">
                                 E-Mail
                             </label>
-
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                placeholder="Ihre E-Mail-Adresse"
-                                required
-                            >
-
-                        </div>
-
-                        <div class="form-group">
-
-                            <label for="vehicle">
+<input autocomplete="email" data-i18n-placeholder="ph_email" id="email" name="email" placeholder="Ihre E-Mail-Adresse" required="" type="email"/>
+</div>
+<div class="form-group">
+<label data-i18n="form_vehicle" for="vehicle">
                                 Fahrzeug
                             </label>
-
-                            <input
-                                type="text"
-                                id="vehicle"
-                                name="vehicle"
-                                placeholder="z. B. Mercedes W211"
-                            >
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="part">
+<input data-i18n-placeholder="ph_vehicle" id="vehicle" name="vehicle" placeholder="z. B. Mercedes W211" type="text"/>
+</div>
+</div>
+<div class="form-group">
+<label data-i18n="form_part" for="part">
                             Benötigtes Ersatzteil
                         </label>
-
-                        <input
-                            type="text"
-                            id="part"
-                            name="part"
-                            placeholder="z. B. Bremsscheiben vorne"
-                            required
-                        >
-
-                    </div>
-
+<input data-i18n-placeholder="ph_part" id="part" name="part" placeholder="z. B. Bremsscheiben vorne" required="" type="text"/>
+</div>
 <div class="form-group">
-    <label for="car-card">
+<label data-i18n="form_upload" for="car-card">
         Fahrzeugschein hochladen (FIN)
     </label>
-
-    <small class="upload-text">
+<small class="upload-text" data-i18n="form_upload_help">
         Bitte laden Sie ein klares Foto Ihres Fahrzeugscheins hoch.
     </small>
-
-    <input
-        type="file"
-        id="car-card"
-        name="car_card"
-        accept=".jpg,.jpeg,.png,.webp,.pdf"
-        required
-    >
+<input accept=".jpg,.jpeg,.png,.webp,.pdf" id="car-card" name="car_card" required="" type="file"/>
 </div>
-                    <div class="form-group">
-
-                        <label for="message">
+<div class="form-group">
+<label data-i18n="form_message" for="message">
                             Nachricht
                         </label>
-
-                        <textarea
-                            id="message"
-                            name="message"
-                            rows="6"
-                            placeholder="Fahrzeugdaten, Teilenummer oder andere relevante Informationen"
-                        ></textarea>
-
-                    </div>
-
-
-                    <button
-                        type="submit"
-                        class="primary-button form-button"
-                    >
+<textarea data-i18n-placeholder="ph_message" id="message" name="message" placeholder="Fahrzeugdaten, Teilenummer oder andere relevante Informationen" rows="6"></textarea>
+</div>
+<button class="primary-button form-button" data-i18n="form_submit" type="submit">
                         Anfrage senden
                     </button>
-
-                </form>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- Footer -->
-
-    <footer class="footer">
-
-        <div class="footer-main">
-
-            <div class="footer-company">
-
-                <img
-                    src="images/logo.png"
-                    alt="AS-Xpert Autoteile"
-                    class="footer-logo"
-                >
-
-                <p>
+</form>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="footer">
+<div class="footer-main">
+<div class="footer-company">
+<img alt="AS-Xpert Autoteile" class="footer-logo" src="images/logo.png"/>
+<p data-i18n="footer_tagline">
                     Qualitätsteile. Expertenservice.
                     Angetrieben von Vertrauen.
                 </p>
-
-            </div>
-
-
-            <div class="footer-column">
-
-                <h3>
+</div>
+<div class="footer-column">
+<h3 data-i18n="footer_navigation">
                     Navigation
                 </h3>
-
-                <a href="#startseite">
+<a data-i18n="nav_home" href="#startseite">
                     Startseite
                 </a>
-
-                <a href="#autoteile">
+<a data-i18n="nav_parts" href="#autoteile">
                     Autoteile
                 </a>
-
-                <a href="#service">
+<a data-i18n="nav_service" href="#service">
                     Service
                 </a>
-
-                <a href="#ueber-uns">
+<a data-i18n="nav_about" href="#ueber-uns">
                     Über uns
                 </a>
-
-                <a href="#kontakt">
+<a data-i18n="nav_contact" href="#kontakt">
                     Kontakt
                 </a>
-
-            </div>
-
-
-            <div class="footer-column">
-
-                <h3>
+</div>
+<div class="footer-column">
+<h3 data-i18n="contact_label">
                     Kontakt
                 </h3>
-
-                <a href="tel:+4917614114137">
+<a href="tel:+4917614114137">
                     +49 176 141 141 37
                 </a>
-
-                <a href="mailto:info@as-xpertautoteile.de">
+<a href="mailto:info@as-xpertautoteile.de">
                     info@as-xpertautoteile.de
                 </a>
-
-               <a href="https://www.google.com/maps/search/?api=1&query=Mohriner+Allee+30-36,+12347+Berlin"
-   target="_blank"
-   rel="noopener noreferrer">
-    Mohriner Allee 30–36<br>
+<a href="https://www.google.com/maps/search/?api=1&amp;query=Mohriner+Allee+30-36,+12347+Berlin" rel="noopener noreferrer" target="_blank">
+    Mohriner Allee 30–36<br/>
     12347 Berlin
 </a>
-
-            </div>
-
-
-            <div class="footer-column">
-
-                <h3>
+</div>
+<div class="footer-column">
+<h3 data-i18n="contact_hours">
                     Öffnungszeiten
                 </h3>
-
-                <p>
+<p data-i18n="footer_weekdays">
                     Montag–Freitag
                 </p>
-               
-
-                <strong>
+<strong>
                     09:00–18:00
                 </strong>
-                <p>
+<p data-i18n="footer_saturday">
                     Samstag
                 </p>
-
-                <strong>
-                    09:00–14:00
+<strong>
+                    09:00–16:00
                 </strong>
-
-                
-            </div>
-
-        </div>
-
-
-        <div class="footer-bottom">
-
-            <p>
-                © 2026
-                <span>AS-Xpert Autoteile</span>.
-                Alle Rechte vorbehalten.
-            </p>
-
-
-            </div>
-
-        </div>
-
-    </footer>
-
-
-    <!-- Floating contact button -->
-
-    <!-- Floating WhatsApp button -->
-
-<a
-    href="https://wa.me/4917614114137"
-    class="floating-contact-button"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="AS-Xpert über WhatsApp kontaktieren"
->
-    <svg class="whatsapp-icon" viewBox="0 0 32 32" aria-hidden="true">
-        <path fill="currentColor"
-            d="M16.04 3C9.39 3 4 8.28 4 14.79c0 2.3.68 4.55 1.96 6.47L4 28l6.95-1.81a12.2 12.2 0 0 0 5.08 1.1h.01C22.68 27.29 28 22 28 15.5 28 8.99 22.68 3 16.04 3zm0 21.98a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-4.12 1.08 1.1-4-.23-.37a9.55 9.55 0 0 1-1.5-5.31c0-5.27 4.43-9.56 9.88-9.56 5.45 0 9.88 4.29 9.88 9.56 0 5.27-4.43 10.19-9.61 10.19zm5.42-7.16c-.3-.14-1.76-.84-2.03-.94-.27-.1-.47-.14-.67.14-.2.29-.77.94-.94 1.13-.17.19-.35.22-.64.07-.3-.14-1.25-.45-2.38-1.43-.88-.76-1.47-1.7-1.64-1.99-.17-.29-.02-.44.13-.58.13-.13.3-.34.44-.51.15-.17.2-.29.3-.48.1-.19.05-.36-.02-.51-.08-.14-.67-1.56-.92-2.14-.24-.56-.49-.49-.67-.5h-.57c-.2 0-.52.07-.79.36-.27.29-1.04 1-1.04 2.43s1.07 2.82 1.22 3.01c.15.19 2.1 3.12 5.09 4.37.71.3 1.27.48 1.7.62.71.22 1.36.19 1.87.12.57-.08 1.76-.7 2.01-1.38.25-.67.25-1.25.17-1.37-.07-.12-.27-.19-.57-.34z"
-        />
-    </svg>
+</div>
+</div>
+<div class="footer-bottom">
+<p data-i18n-html="footer_copyright">
+        © 2026
+        <span>AS-Xpert Autoteile</span>.
+        Alle Rechte vorbehalten.
+    </p>
+<div class="footer-legal">
+<a data-i18n="footer_impressum" href="impressum.html">Impressum</a>
+<span>|</span>
+<a data-i18n="footer_privacy" href="datenschutz.html">Datenschutz</a>
+</div>
+</div>
+</footer>
+<!-- Floating contact button -->
+<!-- Floating WhatsApp button -->
+<a aria-label="AS-Xpert über WhatsApp kontaktieren" class="floating-contact-button" data-i18n-aria-label="aria_whatsapp" href="https://wa.me/4917614114137" rel="noopener noreferrer" target="_blank">
+<svg aria-hidden="true" class="whatsapp-icon" viewbox="0 0 32 32">
+<path d="M16.04 3C9.39 3 4 8.28 4 14.79c0 2.3.68 4.55 1.96 6.47L4 28l6.95-1.81a12.2 12.2 0 0 0 5.08 1.1h.01C22.68 27.29 28 22 28 15.5 28 8.99 22.68 3 16.04 3zm0 21.98a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-4.12 1.08 1.1-4-.23-.37a9.55 9.55 0 0 1-1.5-5.31c0-5.27 4.43-9.56 9.88-9.56 5.45 0 9.88 4.29 9.88 9.56 0 5.27-4.43 10.19-9.61 10.19zm5.42-7.16c-.3-.14-1.76-.84-2.03-.94-.27-.1-.47-.14-.67.14-.2.29-.77.94-.94 1.13-.17.19-.35.22-.64.07-.3-.14-1.25-.45-2.38-1.43-.88-.76-1.47-1.7-1.64-1.99-.17-.29-.02-.44.13-.58.13-.13.3-.34.44-.51.15-.17.2-.29.3-.48.1-.19.05-.36-.02-.51-.08-.14-.67-1.56-.92-2.14-.24-.56-.49-.49-.67-.5h-.57c-.2 0-.52.07-.79.36-.27.29-1.04 1-1.04 2.43s1.07 2.82 1.22 3.01c.15.19 2.1 3.12 5.09 4.37.71.3 1.27.48 1.7.62.71.22 1.36.19 1.87.12.57-.08 1.76-.7 2.01-1.38.25-.67.25-1.25.17-1.37-.07-.12-.27-.19-.57-.34z" fill="currentColor"></path>
+</svg>
 </a>
-
-
-    <!-- Mobile menu JavaScript -->
-
-    <script>
+<!-- Mobile menu JavaScript -->
+<script>
 
         const menuButton = document.querySelector(".menu-button");
         const navLinks = document.querySelector(".nav-links");
@@ -1577,6 +1067,457 @@ function updateActiveNavigation() {
 window.addEventListener("scroll", updateActiveNavigation);
 window.addEventListener("load", updateActiveNavigation);
 </script>
-</body>
+<script>
+const translations = {
+    de: {
+        page_title: "AS-Xpert Autoteile | Kfz-Ersatzteile in Berlin",
+        meta_description: "AS-Xpert Autoteile – hochwertige Kfz-Ersatzteile, persönliche Beratung und zuverlässiger Service in Berlin.",
+        nav_home: "Startseite",
+        nav_parts: "Autoteile",
+        nav_service: "Service",
+        nav_about: "Über uns",
+        nav_brands: "Marken",
+        nav_contact: "Kontakt",
+        request_part_short: "Teil anfragen",
+        aria_menu: "Menü öffnen",
+        aria_whatsapp: "AS-Xpert über WhatsApp kontaktieren",
+        aria_previous_flyer: "Vorherigen Flyer anzeigen",
+        aria_next_flyer: "Nächsten Flyer anzeigen",
+        aria_flyer_1: "Flyer 1 anzeigen",
+        aria_flyer_2: "Flyer 2 anzeigen",
+        aria_flyer_3: "Flyer 3 anzeigen",
+        aria_flyer_4: "Flyer 4 anzeigen",
+        cookie_title: "Cookies & Datenschutz",
+        cookie_text_html: 'Wir verwenden technisch notwendige Cookies, um unsere Website sicher und zuverlässig bereitzustellen. Optionale Cookies werden nur mit Ihrer Zustimmung verwendet. Weitere Informationen finden Sie in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.',
+        cookie_reject: "Ablehnen",
+        cookie_accept: "Alle akzeptieren",
+        hero_label: "Premium-Autoteile in Berlin",
+        hero_heading: 'KFZ-ERSATZTEILE <span>aller marken</span>',
+        hero_text: "Qualität, Kompetenz und zuverlässiger Service. Wir helfen Ihnen, schnell und unkompliziert das passende Ersatzteil für Ihr Fahrzeug zu finden.",
+        hero_request: "Jetzt Teil anfragen",
+        hero_products: "Sortiment ansehen",
+        benefit_selection_title: "Große Teileauswahl",
+        benefit_advice_title: "Professionelle Beratung",
+        benefit_delivery_title: "Schnelle Lieferung",
+        floating_quality_title: "Qualitätsteile",
+        floating_quality_text: "Für viele Fahrzeugmodelle",
+        floating_expert_title: "Expertenservice",
+        floating_expert_text: "Kundenorientierte Fachberatung",
+        benefit_selection_text: "Ersatzteile und Zubehör für zahlreiche Fahrzeughersteller und Modelle.",
+        benefit_advice_text: "Wir unterstützen Sie fachkundig bei der Suche nach dem passenden Teil für Ihr Fahrzeug.",
+        benefit_delivery_text: "Schnelle Bearbeitung Ihrer Anfrage und zuverlässige Lieferung.",
+        categories_label: "Unser Sortiment",
+        categories_title: "Autoteile für Ihr Fahrzeug",
+        categories_text: "Entdecken Sie unsere Produktvielfalt. Für weitere Fahrzeugteile und individuelle Anfragen stehen wir Ihnen gerne direkt zur Verfügung.",
+        category_brakes_title: "Bremsanlage",
+        category_brakes_text: "Bremsscheiben, Bremsbeläge, Bremssättel und Zubehör.",
+        category_engine_title: "Motorenteile",
+        category_engine_text: "Motorkomponenten, Dichtungen, Riemen, Steuerketten, Zahnriemen und weitere Ersatzteile.",
+        category_oil_title: "Öl und Filter",
+        category_oil_text: "Motoröl, Ölfilter, Luftfilter, Innenraumfilter, Kraftstofffilter und vieles mehr.",
+        category_electric_title: "Elektrik und Batterien",
+        category_electric_text: "Fahrzeugbatterien, Sensoren, Schalter, Lichtmaschinen und vieles mehr.",
+        category_suspension_title: "Fahrwerk und Lenkung",
+        category_suspension_text: "Stoßdämpfer, Federn, Querlenker, Lager und Lenkungsteile.",
+        category_lighting_title: "Beleuchtung",
+        category_lighting_text: "Scheinwerfer, Rückleuchten, Lampen und Beleuchtungszubehör.",
+        category_body_title: "Karosserie und Scheiben",
+        category_body_text: "Spiegel, Scheiben, Stoßfänger, Kotflügel und weitere Karosserieteile.",
+        category_cooling_title: "Kühlung und Klima",
+        category_cooling_text: "Kühler, Thermostate, Wasserpumpen und Teile für die Klimaanlage.",
+        category_request: "Teil anfragen →",
+        service_label: "Unser Service",
+        service_title: "Schnell zum passenden Ersatzteil",
+        service_text: "Teilen Sie uns Ihre Fahrzeugdaten oder die Original-Teilenummer mit – wir finden schnell und zuverlässig das passende Ersatzteil für Sie.",
+        service_vehicle_title: "Fahrzeugdaten übermitteln",
+        service_vehicle_text: "Senden Sie uns die wichtigsten Fahrzeugdaten: Marke, Modell, Baujahr und Fahrgestellnummer (FIN).",
+        service_check_title: "Passendes Ersatzteil prüfen lassen",
+        service_check_text: "Anhand Ihrer Fahrzeugdaten prüfen wir, welche Ersatzteile für Ihr Fahrzeug geeignet sind.",
+        service_offer_title: "Angebot erhalten",
+        service_offer_text: "Anschließend erhalten Sie Informationen zur Verfügbarkeit sowie ein individuelles Preisangebot.",
+        service_cta: "Anfrage senden",
+        service_card_title: "AS-Xpert Lieferung",
+        service_card_text: "Schnell bestellt. Zuverlässig geliefert. Direkt und unkompliziert.",
+        service_stat_brands_value: "Schnelle",
+        service_stat_brands_label: "Auftragsbearbeitung",
+        service_stat_advice_value: "Zuverlässige",
+        service_stat_advice_label: "Zustellung",
+        service_stat_delivery_value: "Flexible",
+        service_stat_delivery_label: "Lieferoptionen",
+        brands_label: "Fahrzeugmarken",
+        brands_title: "Ersatzteile für alle Fahrzeugmarken",
+        brands_text: "Hier sehen Sie eine Auswahl beliebter Marken. Fragen Sie uns nach dem passenden Ersatzteil für Ihr Fahrzeug – unabhängig von Marke und Modell.",
+        brands_more: "… und viele weitere Fahrzeugmarken",
+        about_label: "Über AS-Xpert",
+        about_title: "Ihr Partner für Autoersatzteile in Berlin",
+        about_text_1: "AS-Xpert Autoteile steht für Qualität, Zuverlässigkeit und Kompetenz. Mit professioneller Beratung, hochwertigen Ersatzteilen und zuverlässigem Service bieten wir Ihnen die passende Lösung für Ihr Fahrzeug.",
+        about_text_2: "Unser Ziel ist es, die Suche nach dem passenden Ersatzteil so einfach wie möglich zu gestalten – unabhängig von Fahrzeugmarke und Modell.",
+        about_point_parts: "<span>✓</span> Original- und Ersatzteile",
+        about_point_prices: "<span>✓</span> Faire und transparente Preise",
+        about_point_selection: "<span>✓</span> Unterstützung bei der Teileauswahl",
+        about_point_support: "<span>✓</span> Zuverlässige Kundenbetreuung",
+        contact_label: "Kontakt",
+        contact_title: "Welches Ersatzteil benötigen Sie?",
+        contact_text: "Kontaktieren Sie uns telefonisch, per E-Mail oder senden Sie uns direkt eine Anfrage per WhatsApp.",
+        contact_phone: "Telefon",
+        contact_email: "E-Mail",
+        contact_address: "Adresse",
+        contact_hours: "Öffnungszeiten",
+        contact_hours_weekdays: "Mo–Fr: 09:00–18:00",
+        contact_hours_saturday: "Sa: 09:00–16:00",
+        form_title: "Ersatzteil anfragen",
+        form_name: "Vor- und Nachname",
+        form_phone: "Telefon",
+        form_email: "E-Mail",
+        form_vehicle: "Fahrzeug",
+        form_part: "Benötigtes Ersatzteil",
+        form_upload: "Fahrzeugschein hochladen (FIN)",
+        form_upload_help: "Bitte laden Sie ein klares Foto Ihres Fahrzeugscheins hoch.",
+        form_message: "Nachricht",
+        form_submit: "Anfrage senden",
+        ph_name: "Ihr vollständiger Name",
+        ph_phone: "+49 ...",
+        ph_email: "Ihre E-Mail-Adresse",
+        ph_vehicle: "z. B. Mercedes W211",
+        ph_part: "z. B. Bremsscheiben vorne",
+        ph_message: "Fahrzeugdaten, Teilenummer oder andere relevante Informationen",
+        footer_tagline: "Qualitätsteile. Expertenservice. Angetrieben von Vertrauen.",
+        footer_navigation: "Navigation",
+        footer_weekdays: "Montag–Freitag",
+        footer_saturday: "Samstag",
+        footer_copyright: '© 2026 <span>AS-Xpert Autoteile</span>. Alle Rechte vorbehalten.',
+        footer_impressum: "Impressum",
+        footer_privacy: "Datenschutz"
+    },
 
+    en: {
+        page_title: "AS-Xpert Auto Parts | Car Parts in Berlin",
+        meta_description: "AS-Xpert Auto Parts – high-quality car parts, personal advice, and reliable service in Berlin.",
+        nav_home: "Home",
+        nav_parts: "Auto Parts",
+        nav_service: "Service",
+        nav_about: "About Us",
+        nav_brands: "Brands",
+        nav_contact: "Contact",
+        request_part_short: "Request a Part",
+        aria_menu: "Open menu",
+        aria_whatsapp: "Contact AS-Xpert on WhatsApp",
+        aria_previous_flyer: "Show previous flyer",
+        aria_next_flyer: "Show next flyer",
+        aria_flyer_1: "Show flyer 1",
+        aria_flyer_2: "Show flyer 2",
+        aria_flyer_3: "Show flyer 3",
+        aria_flyer_4: "Show flyer 4",
+        cookie_title: "Cookies & Privacy",
+        cookie_text_html: 'We use technically necessary cookies to provide our website securely and reliably. Optional cookies are used only with your consent. For more information, please see our <a href="datenschutz.html">Privacy Policy</a>.',
+        cookie_reject: "Reject",
+        cookie_accept: "Accept All",
+        hero_label: "Premium Auto Parts in Berlin",
+        hero_heading: 'AUTO SPARE PARTS <span>for all brands</span>',
+        hero_text: "Quality, expertise, and reliable service. We help you quickly and easily find the right spare part for your vehicle.",
+        hero_request: "Request a Part Now",
+        hero_products: "View Product Range",
+        benefit_selection_title: "Wide Parts Selection",
+        benefit_advice_title: "Professional Advice",
+        benefit_delivery_title: "Fast Delivery",
+        floating_quality_title: "Quality Parts",
+        floating_quality_text: "For many vehicle models",
+        floating_expert_title: "Expert Service",
+        floating_expert_text: "Customer-focused expert advice",
+        benefit_selection_text: "Spare parts and accessories for numerous vehicle manufacturers and models.",
+        benefit_advice_text: "We provide expert support to help you find the right part for your vehicle.",
+        benefit_delivery_text: "Fast processing of your request and reliable delivery.",
+        categories_label: "Our Product Range",
+        categories_title: "Auto Parts for Your Vehicle",
+        categories_text: "Discover our wide range of products. For additional vehicle parts and individual requests, please contact us directly.",
+        category_brakes_title: "Braking System",
+        category_brakes_text: "Brake discs, brake pads, brake calipers, and accessories.",
+        category_engine_title: "Engine Parts",
+        category_engine_text: "Engine components, gaskets, belts, timing chains, timing belts, and other spare parts.",
+        category_oil_title: "Oil & Filters",
+        category_oil_text: "Engine oil, oil filters, air filters, cabin filters, fuel filters, and much more.",
+        category_electric_title: "Electrical & Batteries",
+        category_electric_text: "Car batteries, sensors, switches, alternators, and much more.",
+        category_suspension_title: "Suspension & Steering",
+        category_suspension_text: "Shock absorbers, springs, control arms, bearings, and steering parts.",
+        category_lighting_title: "Lighting",
+        category_lighting_text: "Headlights, tail lights, bulbs, and lighting accessories.",
+        category_body_title: "Body & Glass",
+        category_body_text: "Mirrors, windows, bumpers, fenders, and other body parts.",
+        category_cooling_title: "Cooling & Climate Control",
+        category_cooling_text: "Radiators, thermostats, water pumps, and air-conditioning parts.",
+        category_request: "Request a Part →",
+        service_label: "Our Service",
+        service_title: "Quickly Find the Right Spare Part",
+        service_text: "Send us your vehicle details or the original part number, and we will quickly and reliably find the right spare part for you.",
+        service_vehicle_title: "Send Vehicle Details",
+        service_vehicle_text: "Send us the key vehicle details: make, model, year, and Vehicle Identification Number (VIN).",
+        service_check_title: "Let Us Check the Right Part",
+        service_check_text: "Using your vehicle details, we check which spare parts are suitable for your vehicle.",
+        service_offer_title: "Receive an Offer",
+        service_offer_text: "You will then receive information about availability along with an individual price quote.",
+        service_cta: "Send Request",
+        service_card_title: "AS-Xpert Service",
+        service_card_text: "Quality parts. Expert service. Driven by trust.",
+        service_stat_brands_value: "Numerous",
+        service_stat_brands_label: "Vehicle Brands",
+        service_stat_advice_value: "Professional",
+        service_stat_advice_label: "Advice & Support",
+        service_stat_delivery_value: "Fast",
+        service_stat_delivery_label: "Processing & Delivery",
+        brands_label: "Vehicle Brands",
+        brands_title: "Spare Parts for All Vehicle Brands",
+        brands_text: "Here you can see a selection of popular brands. Ask us for the right spare part for your vehicle, regardless of make or model.",
+        brands_more: "… and many more vehicle brands",
+        about_label: "About AS-Xpert",
+        about_title: "Your Auto Parts Partner in Berlin",
+        about_text_1: "AS-Xpert Auto Parts stands for quality, reliability, and expertise. With professional advice, high-quality spare parts, and dependable service, we provide the right solution for your vehicle.",
+        about_text_2: "Our goal is to make finding the right spare part as simple as possible, regardless of vehicle make or model.",
+        about_point_parts: "<span>✓</span> Original and replacement parts",
+        about_point_prices: "<span>✓</span> Fair and transparent prices",
+        about_point_selection: "<span>✓</span> Support with parts selection",
+        about_point_support: "<span>✓</span> Reliable customer support",
+        contact_label: "Contact",
+        contact_title: "Which Spare Part Do You Need?",
+        contact_text: "Contact us by phone or email, or send us a request directly via WhatsApp.",
+        contact_phone: "Phone",
+        contact_email: "Email",
+        contact_address: "Address",
+        contact_hours: "Opening Hours",
+        contact_hours_weekdays: "Mon–Fri: 09:00–18:00",
+        contact_hours_saturday: "Sat: 09:00–16:00",
+        form_title: "Request a Spare Part",
+        form_name: "Full Name",
+        form_phone: "Phone",
+        form_email: "Email",
+        form_vehicle: "Vehicle",
+        form_part: "Required Spare Part",
+        form_upload: "Upload Vehicle Registration (VIN)",
+        form_upload_help: "Please upload a clear photo of your vehicle registration document.",
+        form_message: "Message",
+        form_submit: "Send Request",
+        ph_name: "Your full name",
+        ph_phone: "+49 ...",
+        ph_email: "Your email address",
+        ph_vehicle: "e.g. Mercedes W211",
+        ph_part: "e.g. front brake discs",
+        ph_message: "Vehicle details, part number, or other relevant information",
+        footer_tagline: "Quality parts. Expert service. Driven by trust.",
+        footer_navigation: "Navigation",
+        footer_weekdays: "Monday–Friday",
+        footer_saturday: "Saturday",
+        footer_copyright: '© 2026 <span>AS-Xpert Auto Parts</span>. All rights reserved.',
+        footer_impressum: "Legal Notice",
+        footer_privacy: "Privacy Policy"
+    },
+
+    ar: {
+        page_title: "AS-Xpert لقطع السيارات | قطع غيار في برلين",
+        meta_description: "AS-Xpert لقطع السيارات – قطع غيار عالية الجودة، استشارة شخصية وخدمة موثوقة في برلين.",
+        nav_home: "الرئيسية",
+        nav_parts: "قطع الغيار",
+        nav_service: "الخدمة",
+        nav_about: "من نحن",
+        nav_brands: "الماركات",
+        nav_contact: "تواصل معنا",
+        request_part_short: "اطلب قطعة",
+        aria_menu: "فتح القائمة",
+        aria_whatsapp: "تواصل مع AS-Xpert عبر واتساب",
+        aria_previous_flyer: "عرض المنشور السابق",
+        aria_next_flyer: "عرض المنشور التالي",
+        aria_flyer_1: "عرض المنشور 1",
+        aria_flyer_2: "عرض المنشور 2",
+        aria_flyer_3: "عرض المنشور 3",
+        aria_flyer_4: "عرض المنشور 4",
+        cookie_title: "ملفات تعريف الارتباط والخصوصية",
+        cookie_text_html: 'نستخدم ملفات تعريف الارتباط الضرورية تقنيًا لتشغيل موقعنا بأمان وموثوقية. ولا نستخدم ملفات تعريف الارتباط الاختيارية إلا بعد موافقتك. لمزيد من المعلومات، راجع <a href="datenschutz.html">سياسة الخصوصية</a>.',
+        cookie_reject: "رفض",
+        cookie_accept: "قبول الكل",
+        hero_label: "قطع غيار عالية الجودة في برلين",
+        hero_heading: 'قطع غيار السيارات <span>لجميع الماركات</span>',
+        hero_text: "جودة وخبرة وخدمة موثوقة. نساعدك في العثور بسرعة وسهولة على قطعة الغيار المناسبة لسيارتك.",
+        hero_request: "اطلب قطعة الآن",
+        hero_products: "تصفح المنتجات",
+        benefit_selection_title: "تشكيلة واسعة من القطع",
+        benefit_advice_title: "استشارة احترافية",
+        benefit_delivery_title: "توصيل سريع",
+        floating_quality_title: "قطع عالية الجودة",
+        floating_quality_text: "للعديد من موديلات السيارات",
+        floating_expert_title: "خدمة متخصصة",
+        floating_expert_text: "استشارة متخصصة تركز على احتياجات العميل",
+        benefit_selection_text: "قطع غيار وإكسسوارات للعديد من الشركات والموديلات.",
+        benefit_advice_text: "نقدم لك الدعم المتخصص للعثور على القطعة المناسبة لسيارتك.",
+        benefit_delivery_text: "معالجة سريعة لطلبك وتوصيل موثوق.",
+        categories_label: "منتجاتنا",
+        categories_title: "قطع غيار لسيارتك",
+        categories_text: "اكتشف مجموعتنا الواسعة من المنتجات. لقطع إضافية أو طلبات خاصة، تواصل معنا مباشرة.",
+        category_brakes_title: "نظام الفرامل",
+        category_brakes_text: "أقراص الفرامل، فحمات الفرامل، كاليبرات الفرامل وملحقاتها.",
+        category_engine_title: "قطع المحرك",
+        category_engine_text: "مكونات المحرك، الجوانات، الأحزمة، سلاسل التوقيت، أحزمة التوقيت وقطع غيار أخرى.",
+        category_oil_title: "الزيوت والفلاتر",
+        category_oil_text: "زيت المحرك، فلتر الزيت، فلتر الهواء، فلتر المقصورة، فلتر الوقود والمزيد.",
+        category_electric_title: "الكهرباء والبطاريات",
+        category_electric_text: "بطاريات السيارات، الحساسات، المفاتيح، الدينامو والمزيد.",
+        category_suspension_title: "نظام التعليق والتوجيه",
+        category_suspension_text: "ممتصات الصدمات، النوابض، أذرع التعليق، المحامل وقطع التوجيه.",
+        category_lighting_title: "الإضاءة",
+        category_lighting_text: "المصابيح الأمامية والخلفية، اللمبات وملحقات الإضاءة.",
+        category_body_title: "الهيكل والزجاج",
+        category_body_text: "المرايا، الزجاج، الصدامات، الرفارف وقطع الهيكل الأخرى.",
+        category_cooling_title: "التبريد والتكييف",
+        category_cooling_text: "الرادياتيرات، الثرموستات، مضخات المياه وقطع نظام التكييف.",
+        category_request: "اطلب قطعة ←",
+        service_label: "خدمتنا",
+        service_title: "احصل بسرعة على قطعة الغيار المناسبة",
+        service_text: "أرسل لنا بيانات سيارتك أو رقم القطعة الأصلي، وسنساعدك بسرعة وموثوقية في العثور على قطعة الغيار المناسبة.",
+        service_vehicle_title: "إرسال بيانات السيارة",
+        service_vehicle_text: "أرسل لنا أهم بيانات السيارة: الماركة، الموديل، سنة الصنع ورقم الهيكل (VIN).",
+        service_check_title: "التحقق من القطعة المناسبة",
+        service_check_text: "نعتمد على بيانات سيارتك للتحقق من قطع الغيار المناسبة لها.",
+        service_offer_title: "استلام عرض السعر",
+        service_offer_text: "بعد ذلك ستحصل على معلومات التوفر بالإضافة إلى عرض سعر مخصص.",
+        service_cta: "إرسال الطلب",
+        service_card_title: "خدمة AS-Xpert",
+        service_card_text: "قطع عالية الجودة. خدمة متخصصة. ثقة تدفعنا إلى الأمام.",
+        service_stat_brands_value: "العديد من",
+        service_stat_brands_label: "ماركات السيارات",
+        service_stat_advice_value: "استشارة",
+        service_stat_advice_label: "ودعم احترافي",
+        service_stat_delivery_value: "سرعة في",
+        service_stat_delivery_label: "المعالجة والتوصيل",
+        brands_label: "ماركات السيارات",
+        brands_title: "قطع غيار لجميع ماركات السيارات",
+        brands_text: "نعرض هنا مجموعة من أشهر الماركات. اسألنا عن قطعة الغيار المناسبة لسيارتك مهما كانت الماركة أو الموديل.",
+        brands_more: "… والعديد من ماركات السيارات الأخرى",
+        about_label: "عن AS-Xpert",
+        about_title: "شريكك لقطع غيار السيارات في برلين",
+        about_text_1: "تمثل AS-Xpert لقطع السيارات الجودة والموثوقية والخبرة. ومن خلال الاستشارة الاحترافية وقطع الغيار عالية الجودة والخدمة الموثوقة، نقدم لك الحل المناسب لسيارتك.",
+        about_text_2: "هدفنا هو جعل عملية العثور على قطعة الغيار المناسبة سهلة قدر الإمكان، مهما كانت ماركة السيارة أو موديلها.",
+        about_point_parts: "<span>✓</span> قطع أصلية وبديلة",
+        about_point_prices: "<span>✓</span> أسعار عادلة وشفافة",
+        about_point_selection: "<span>✓</span> مساعدة في اختيار القطع",
+        about_point_support: "<span>✓</span> خدمة عملاء موثوقة",
+        contact_label: "تواصل معنا",
+        contact_title: "ما قطعة الغيار التي تحتاجها؟",
+        contact_text: "تواصل معنا هاتفيًا أو عبر البريد الإلكتروني، أو أرسل طلبك مباشرة عبر واتساب.",
+        contact_phone: "الهاتف",
+        contact_email: "البريد الإلكتروني",
+        contact_address: "العنوان",
+        contact_hours: "ساعات العمل",
+        contact_hours_weekdays: "الاثنين–الجمعة: 09:00–18:00",
+        contact_hours_saturday: "السبت: 09:00–16:00",
+        form_title: "طلب قطعة غيار",
+        form_name: "الاسم الكامل",
+        form_phone: "الهاتف",
+        form_email: "البريد الإلكتروني",
+        form_vehicle: "السيارة",
+        form_part: "قطعة الغيار المطلوبة",
+        form_upload: "رفع صورة رخصة السيارة (VIN)",
+        form_upload_help: "يرجى رفع صورة واضحة لرخصة السيارة.",
+        form_message: "الرسالة",
+        form_submit: "إرسال الطلب",
+        ph_name: "الاسم الكامل",
+        ph_phone: "+49 ...",
+        ph_email: "بريدك الإلكتروني",
+        ph_vehicle: "مثال: Mercedes W211",
+        ph_part: "مثال: أقراص فرامل أمامية",
+        ph_message: "بيانات السيارة، رقم القطعة أو أي معلومات أخرى مهمة",
+        footer_tagline: "قطع عالية الجودة. خدمة متخصصة. ثقة تدفعنا إلى الأمام.",
+        footer_navigation: "التنقل",
+        footer_weekdays: "الاثنين–الجمعة",
+        footer_saturday: "السبت",
+        footer_copyright: '© 2026 <span>AS-Xpert Autoteile</span>. جميع الحقوق محفوظة.',
+        footer_impressum: "البيانات القانونية",
+        footer_privacy: "سياسة الخصوصية"
+    }
+};
+
+function getStoredLanguage() {
+    try {
+        const saved = localStorage.getItem("asxpert-language");
+        return Object.prototype.hasOwnProperty.call(translations, saved) ? saved : "de";
+    } catch (error) {
+        return "de";
+    }
+}
+
+function saveLanguage(lang) {
+    try {
+        localStorage.setItem("asxpert-language", lang);
+    } catch (error) {
+        // The language still changes even if localStorage is unavailable.
+    }
+}
+
+function changeLanguage(lang) {
+    if (!Object.prototype.hasOwnProperty.call(translations, lang)) {
+        lang = "de";
+    }
+
+    const dictionary = translations[lang];
+
+    document.querySelectorAll("[data-i18n]").forEach(function (element) {
+        const key = element.getAttribute("data-i18n");
+        if (Object.prototype.hasOwnProperty.call(dictionary, key)) {
+            element.textContent = dictionary[key];
+        }
+    });
+
+    document.querySelectorAll("[data-i18n-html]").forEach(function (element) {
+        const key = element.getAttribute("data-i18n-html");
+        if (Object.prototype.hasOwnProperty.call(dictionary, key)) {
+            element.innerHTML = dictionary[key];
+        }
+    });
+
+    document.querySelectorAll("[data-i18n-placeholder]").forEach(function (element) {
+        const key = element.getAttribute("data-i18n-placeholder");
+        if (Object.prototype.hasOwnProperty.call(dictionary, key)) {
+            element.setAttribute("placeholder", dictionary[key]);
+        }
+    });
+
+    document.querySelectorAll("[data-i18n-alt]").forEach(function (element) {
+        const key = element.getAttribute("data-i18n-alt");
+        if (Object.prototype.hasOwnProperty.call(dictionary, key)) {
+            element.setAttribute("alt", dictionary[key]);
+        }
+    });
+
+    document.querySelectorAll("[data-i18n-aria-label]").forEach(function (element) {
+        const key = element.getAttribute("data-i18n-aria-label");
+        if (Object.prototype.hasOwnProperty.call(dictionary, key)) {
+            element.setAttribute("aria-label", dictionary[key]);
+        }
+    });
+
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+    document.body.classList.toggle("rtl", lang === "ar");
+
+    document.title = dictionary.page_title;
+    const description = document.querySelector('meta[name="description"]');
+    if (description) {
+        description.setAttribute("content", dictionary.meta_description);
+    }
+
+    document.querySelectorAll(".lang-btn").forEach(function (button) {
+        const isActive = button.getAttribute("data-lang") === lang;
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-pressed", isActive ? "true" : "false");
+    });
+
+    saveLanguage(lang);
+}
+
+document.querySelectorAll(".lang-btn").forEach(function (button) {
+    button.addEventListener("click", function () {
+        changeLanguage(this.getAttribute("data-lang"));
+    });
+});
+
+changeLanguage(getStoredLanguage());
+</script>
+</body>
 </html>
